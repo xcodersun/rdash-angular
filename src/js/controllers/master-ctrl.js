@@ -22,8 +22,14 @@ function MasterCtrl($scope, $cookieStore) {
             } else {
                 $scope.toggle = true;
             }
+            if (angular.isDefined($cookieStore.get('accordion'))) {
+                $scope.accordion = ! $cookieStore.get('accordion') ? false : true;
+            } else {
+                $scope.accordion = true;
+            }
         } else {
             $scope.toggle = false;
+            $scope.accordion = false;
         }
 
     });
@@ -32,6 +38,11 @@ function MasterCtrl($scope, $cookieStore) {
         $scope.toggle = !$scope.toggle;
         $cookieStore.put('toggle', $scope.toggle);
     };
+
+    $scope.accordionSublist = function() {
+        $scope.accordion = !$scope.accordion;
+        $cookieStore.put('accordion', $scope.accordion);
+    }
 
     window.onresize = function() {
         $scope.$apply();

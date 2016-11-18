@@ -9,8 +9,10 @@
   <!-- build:css lib/css/main.min.css -->
   <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
+  <!--link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css"-->
   <!-- endbuild -->
+  <!-- Custom  Css -->
+  <link rel="stylesheet" type="text/css" href="css/custom.min.css">
   <!-- SCRIPTS -->
   <!-- build:js lib/js/main.min.js -->
   <script type="text/javascript" src="components/angular/angular.min.js"></script>
@@ -23,7 +25,6 @@
 </head>
 <body ng-controller="MasterCtrl">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
       <ul class="sidebar">
@@ -35,10 +36,32 @@
         </li>
         <li class="sidebar-title"><span>NAVIGATION</span></li>
         <li class="sidebar-list">
-          <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+          <a href="#/home">Home <span class="menu-icon fa fa-home"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
+          <a ng-click="accordionSublist()" href="#/account">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
+          <!--div id="sidebar-sublist-wrapper" ng-class="{'open': accordion}">
+            <div class="sidebar-sublist">
+              <a href="#/company_profile">Company Profile</a>
+              <a href="#/password_api_token">Password / API Token</a>
+              <a href="#/account_capability">Account Capability</a>
+            </div>
+          </div-->
+        </li>
+        <li class="sidebar-list">
+          <a href="#/channels">Channels <span class="menu-icon fa  fa-cloud-upload"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/devices">Devices <span class="menu-icon fa fa-laptop"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/dashboards">Dashboards <span class="menu-icon fa fa-area-chart"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/security">Security <span class="menu-icon fa fa-lock"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/auditlog">Audit Log <span class="menu-icon fa fa-file"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">

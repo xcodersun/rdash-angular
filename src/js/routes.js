@@ -13,11 +13,31 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('index', {
                 url: '/',
-                templateUrl: 'templates/dashboard.html'
+                templateUrl: 'templates/home.html'
             })
-            .state('tables', {
-                url: '/tables',
-                templateUrl: 'templates/tables.html'
+            .state('account', {
+                url: '/account',
+                templateUrl: 'templates/account.html'
+            })
+            .state('channels', {
+                url: '/channels',
+                templateUrl: 'templates/channels.html'
+            })
+            .state('devices', {
+                url: '/devices',
+                templateUrl: 'templates/devices.html'
+            })
+            .state('dashboards', {
+                url: '/dashboards',
+                templateUrl: 'templates/dashboards.html'
+            })
+            .state('security', {
+                url: '/security',
+                templateUrl: 'templates/security.html'
+            })
+            .state('auditlog', {
+                url: '/auditlog',
+                templateUrl: 'templates/audit_log.html'
             });
     }
 ]);
