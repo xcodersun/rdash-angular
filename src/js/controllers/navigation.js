@@ -3,9 +3,9 @@
  */
 
 angular.module('RDash')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', MasterCtrl]);
+    .controller('Navigation', ['$scope', '$cookieStore', Navigation]);
 
-function MasterCtrl($scope, $cookieStore) {
+function Navigation($scope, $cookieStore) {
     /**
      * Sidebar Toggle & Cookie Control
      */
@@ -31,7 +31,6 @@ function MasterCtrl($scope, $cookieStore) {
             $scope.toggle = false;
             $scope.accordion = false;
         }
-
     });
 
     $scope.toggleSidebar = function() {

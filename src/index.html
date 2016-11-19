@@ -23,7 +23,7 @@
   <!-- Custom Scripts -->
   <script type="text/javascript" src="js/dashboard.min.js"></script>
 </head>
-<body ng-controller="MasterCtrl">
+<body ng-controller="Navigation">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -39,14 +39,14 @@
           <a href="#/home">Home <span class="menu-icon fa fa-home"></span></a>
         </li>
         <li class="sidebar-list">
-          <a ng-click="accordionSublist()" href="#/account">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
-          <!--div id="sidebar-sublist-wrapper" ng-class="{'open': accordion}">
+          <div id="sidebar-sublist-wrapper" ng-class="{'accordion': accordion}" ng-cloak>
+            <a ng-click="accordionSublist()" href="#/account">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
             <div class="sidebar-sublist">
               <a href="#/company_profile">Company Profile</a>
               <a href="#/password_api_token">Password / API Token</a>
               <a href="#/account_capability">Account Capability</a>
             </div>
-          </div-->
+          </div>
         </li>
         <li class="sidebar-list">
           <a href="#/channels">Channels <span class="menu-icon fa  fa-cloud-upload"></span></a>

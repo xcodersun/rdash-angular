@@ -103,9 +103,36 @@ ul.sidebar {
                 }
             }
         }
+        .sidebar-sublist {
+            display: none;
+        }
     }
     .sidebar-footer {
         display: none;
+    }
+}
+ul.sidebar {
+    #sidebar-sublist-wrapper.accordion{
+        .sidebar-sublist {
+            height: 40px;
+            a {
+                text-indent: 45px;
+                font-size: 15px;
+                color: #b2bfdc;
+                line-height: 40px;
+                background: @sidebarSubtitleColor;
+            }
+            a:hover {
+                color: #fff;
+                border-left: 3px solid @sidebarMenuItemHover;
+                text-indent: 40px;
+            }
+        }
+    }
+    #sidebar-sublist-wrapper:not(.accordion) {
+        .sidebar-sublist {
+            display: none;
+        }
     }
 }
 .sidebar-footer {
