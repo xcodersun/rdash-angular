@@ -22,14 +22,38 @@ function Navigation($scope, $cookieStore) {
             } else {
                 $scope.toggle = true;
             }
-            if (angular.isDefined($cookieStore.get('accordion'))) {
-                $scope.accordion = ! $cookieStore.get('accordion') ? false : true;
+            if (angular.isDefined($cookieStore.get('navAccount'))) {
+                $scope.navAccount = ! $cookieStore.get('navAccount') ? false : true;
             } else {
-                $scope.accordion = true;
+                $scope.navAccount = true;
+            }
+            if (angular.isDefined($cookieStore.get('navChannels'))) {
+                $scope.navChannels = ! $cookieStore.get('navChannels') ? false : true;
+            } else {
+                $scope.navChannels = true;
+            }
+            if (angular.isDefined($cookieStore.get('navDevices'))) {
+                $scope.navDevices = ! $cookieStore.get('navDevices') ? false : true;
+            } else {
+                $scope.navDevices = true;
+            }
+            if (angular.isDefined($cookieStore.get('navDashboards'))) {
+                $scope.navDashboards = ! $cookieStore.get('navDashboards') ? false : true;
+            } else {
+                $scope.navDashboards = true;
+            }
+            if (angular.isDefined($cookieStore.get('navSecurity'))) {
+                $scope.navSecurity = ! $cookieStore.get('navSecurity') ? false : true;
+            } else {
+                $scope.navSecurity = true;
             }
         } else {
             $scope.toggle = false;
-            $scope.accordion = false;
+            $scope.navAccount = false;
+            $scope.navChannels = false;
+            $scope.navDevices = false;
+            $scope.navDashboards = false;
+            $scope.navSecurity = false;
         }
     });
 
@@ -38,9 +62,29 @@ function Navigation($scope, $cookieStore) {
         $cookieStore.put('toggle', $scope.toggle);
     };
 
-    $scope.accordionSublist = function() {
-        $scope.accordion = !$scope.accordion;
-        $cookieStore.put('accordion', $scope.accordion);
+    $scope.toggleNavAccount = function() {
+        $scope.navAccount = !$scope.navAccount;
+        $cookieStore.put('navAccount', $scope.navAccount);
+    }
+
+    $scope.toggleNavChannels = function() {
+        $scope.navChannels = !$scope.navChannels;
+        $cookieStore.put('navChannels', $scope.navChannels);
+    }
+
+    $scope.toggleNavDevices = function() {
+        $scope.navDevices = !$scope.navDevices;
+        $cookieStore.put('navDevices', $scope.navDevices);
+    }
+
+    $scope.toggleNavDashboards = function() {
+        $scope.navDashboards = !$scope.navDashboards;
+        $cookieStore.put('navDashboards', $scope.navDashboards);
+    }
+
+    $scope.toggleNavSecurity = function() {
+        $scope.navSecurity = !$scope.navSecurity;
+        $cookieStore.put('navSecurity', $scope.navSecurity);
     }
 
     window.onresize = function() {
