@@ -1,14 +1,14 @@
 @import "variables.less";
 
 /**
- * Sidebar
+ * navbar
  */
- #page-wrapper {
+ #navbar-column-wrapper {
     padding-left: 70px;
     height: 100%
 }
 
-#sidebar-wrapper {
+#navbar-wrapper {
     margin-left: -150px;
     left: -30px;
     width: 250px;
@@ -17,27 +17,27 @@
     z-index: 999;
 }
 
-#page-wrapper, #sidebar-wrapper {
+#navbar-column-wrapper, #navbar-wrapper {
     transition: all .4s ease 0s;
 }
 
-#sidebar-wrapper {
-    background: @sidebarBaseColor;
+#navbar-wrapper {
+    background: @navbarBaseColor;
 }
 
-#page-wrapper.open #sidebar-wrapper {
+#navbar-column-wrapper.open #navbar-wrapper {
     left: 150px;
 }
 
-ul.sidebar .sidebar-main a,
-.sidebar-footer,
-ul.sidebar .sidebar-list a:hover,
-#page-wrapper:not(.open) ul.sidebar .sidebar-title.separator {
-    /* Sidebar header and footer color */
-    background: @sidebarHeaderColor;
+ul.navbar .navbar-name a,
+.navbar-footer,
+ul.navbar .navbar-menu a:hover,
+#navbar-column-wrapper:not(.open) ul.navbar .navbar-title.separator {
+    /* navbar header and footer color */
+    background: @navbarHeaderColor;
 }
 
-ul.sidebar {
+ul.navbar {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -56,7 +56,7 @@ ul.sidebar {
             width: 250px;
         }
     }
-    .sidebar-main {
+    .navbar-name {
         height: 65px;
         a {
             font-size: 18px;
@@ -72,15 +72,15 @@ ul.sidebar {
             line-height: 60px;
         }
     }
-    .sidebar-title {
-        color: @sidebarTitleColor;
+    .navbar-title {
+        color: @navbarTitleColor;
         font-size: 12px;
         height: 35px;
         line-height: 40px;
         text-transform: uppercase;
         transition: all .6s ease 0s;
     }
-    .sidebar-list {
+    .navbar-menu {
         height: 40px;
         a {
             text-indent: 25px;
@@ -90,7 +90,7 @@ ul.sidebar {
         }
         a:hover {
             color: #fff;
-            border-left: 3px solid @sidebarMenuItemHover;
+            border-left: 3px solid @navbarMenuItemHover;
             text-indent: 22px;
             .menu-icon {
                 text-indent: 25px;
@@ -104,20 +104,20 @@ ul.sidebar {
         }
     }
 }
-#page-wrapper:not(.open) {
-    ul.sidebar {
+#navbar-column-wrapper:not(.open) {
+    ul.navbar {
         bottom: 0;
-        .sidebar-title {
+        .navbar-title {
             display: none;
             height: 0px;
             text-indent: -100px;
         }
-        .sidebar-title.separator {
+        .navbar-title.separator {
             display: block;
             height: 2px;
             margin: 13px 0;
         }
-        .sidebar-list {
+        .navbar-menu {
             a:hover {
                 span {
                     border-left: 3px solid #e99d1a;
@@ -125,39 +125,39 @@ ul.sidebar {
                 }
             }
         }
-        .sidebar-sublist {
+        .navbar-submenu {
             display: none;
         }
     }
-    .sidebar-footer {
+    .navbar-footer {
         display: none;
     }
 }
-ul.sidebar {
-    #sidebar-sublist-wrapper.accordion{
-        .sidebar-sublist {
+ul.navbar {
+    #navbar-submenu-wrapper.accordion{
+        .navbar-submenu {
             height: 40px;
             a {
                 text-indent: 45px;
                 font-size: 15px;
                 color: #b2bfdc;
                 line-height: 40px;
-                background: @sidebarSubtitleColor;
+                background: @navbarSubtitleColor;
             }
             a:hover {
                 color: #fff;
-                border-left: 3px solid @sidebarMenuItemHover;
+                border-left: 3px solid @navbarMenuItemHover;
                 text-indent: 40px;
             }
         }
     }
-    #sidebar-sublist-wrapper:not(.accordion) {
-        .sidebar-sublist {
+    #navbar-submenu-wrapper:not(.accordion) {
+        .navbar-submenu {
             display: none;
         }
     }
 }
-.sidebar-footer {
+.navbar-footer {
     position: absolute;
     height: 40px;
     bottom: 0;
