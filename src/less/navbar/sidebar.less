@@ -3,8 +3,30 @@
 /**
  * Sidebar
  */
+ #page-wrapper {
+    padding-left: 70px;
+    height: 100%
+}
+
+#sidebar-wrapper {
+    margin-left: -150px;
+    left: -30px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    z-index: 999;
+}
+
+#page-wrapper, #sidebar-wrapper {
+    transition: all .4s ease 0s;
+}
+
 #sidebar-wrapper {
     background: @sidebarBaseColor;
+}
+
+#page-wrapper.open #sidebar-wrapper {
+    left: 150px;
 }
 
 ul.sidebar .sidebar-main a,
