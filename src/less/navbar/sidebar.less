@@ -1,14 +1,14 @@
 @import "variables.less";
 
 /**
- * navbar
+ * navibar
  */
- #navbar-column-wrapper {
+ #navibar-column-wrapper {
     padding-left: 70px;
     height: 100%
 }
 
-#navbar-wrapper {
+#navibar-wrapper {
     margin-left: -150px;
     left: -30px;
     width: 250px;
@@ -17,27 +17,27 @@
     z-index: 999;
 }
 
-#navbar-column-wrapper, #navbar-wrapper {
+#navibar-column-wrapper, #navibar-wrapper {
     transition: all .4s ease 0s;
 }
 
-#navbar-wrapper {
-    background: @navbarBaseColor;
+#navibar-wrapper {
+    background: @navibarBaseColor;
 }
 
-#navbar-column-wrapper.open #navbar-wrapper {
+#navibar-column-wrapper.open #navibar-wrapper {
     left: 150px;
 }
 
-ul.navbar .navbar-name a,
-.navbar-footer,
-ul.navbar .navbar-menu a:hover,
-#navbar-column-wrapper:not(.open) ul.navbar .navbar-title.separator {
-    /* navbar header and footer color */
-    background: @navbarHeaderColor;
+ul.navibar .navibar-name a,
+.navibar-footer,
+ul.navibar .navibar-menu a:hover,
+#navibar-column-wrapper:not(.open) ul.navibar .navibar-title.separator {
+    /* navibar header and footer color */
+    background: @navibarHeaderColor;
 }
 
-ul.navbar {
+ul.navibar {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -56,7 +56,7 @@ ul.navbar {
             width: 250px;
         }
     }
-    .navbar-name {
+    .navibar-name {
         height: 65px;
         a {
             font-size: 18px;
@@ -72,15 +72,15 @@ ul.navbar {
             line-height: 60px;
         }
     }
-    .navbar-title {
-        color: @navbarTitleColor;
+    .navibar-title {
+        color: @navibarTitleColor;
         font-size: 12px;
         height: 35px;
         line-height: 40px;
         text-transform: uppercase;
         transition: all .6s ease 0s;
     }
-    .navbar-menu {
+    .navibar-menu {
         height: 40px;
         a {
             text-indent: 25px;
@@ -90,7 +90,7 @@ ul.navbar {
         }
         a:hover {
             color: #fff;
-            border-left: 3px solid @navbarMenuItemHover;
+            border-left: 3px solid @navibarMenuItemHover;
             text-indent: 22px;
             .menu-icon {
                 text-indent: 25px;
@@ -104,20 +104,20 @@ ul.navbar {
         }
     }
 }
-#navbar-column-wrapper:not(.open) {
-    ul.navbar {
+#navibar-column-wrapper:not(.open) {
+    ul.navibar {
         bottom: 0;
-        .navbar-title {
+        .navibar-title {
             display: none;
             height: 0px;
             text-indent: -100px;
         }
-        .navbar-title.separator {
+        .navibar-title.separator {
             display: block;
             height: 2px;
             margin: 13px 0;
         }
-        .navbar-menu {
+        .navibar-menu {
             a:hover {
                 span {
                     border-left: 3px solid #e99d1a;
@@ -125,39 +125,39 @@ ul.navbar {
                 }
             }
         }
-        .navbar-submenu {
+        .navibar-submenu {
             display: none;
         }
     }
-    .navbar-footer {
+    .navibar-footer {
         display: none;
     }
 }
-ul.navbar {
-    #navbar-submenu-wrapper.accordion{
-        .navbar-submenu {
+ul.navibar {
+    #navibar-submenu-wrapper.accordion{
+        .navibar-submenu {
             height: 40px;
             a {
                 text-indent: 45px;
                 font-size: 15px;
                 color: #b2bfdc;
                 line-height: 40px;
-                background: @navbarSubtitleColor;
+                background: @navibarSubtitleColor;
             }
             a:hover {
                 color: #fff;
-                border-left: 3px solid @navbarMenuItemHover;
+                border-left: 3px solid @navibarMenuItemHover;
                 text-indent: 40px;
             }
         }
     }
-    #navbar-submenu-wrapper:not(.accordion) {
-        .navbar-submenu {
+    #navibar-submenu-wrapper:not(.accordion) {
+        .navibar-submenu {
             display: none;
         }
     }
 }
-.navbar-footer {
+.navibar-footer {
     position: absolute;
     height: 40px;
     bottom: 0;

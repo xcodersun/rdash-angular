@@ -24,73 +24,73 @@
   <script type="text/javascript" src="js/dashboard.min.js"></script>
 </head>
 <body ng-controller="Navigation">
-  <div id="navbar-column-wrapper" ng-class="{'open': toggle}" ng-cloak>
+  <div id="navibar-column-wrapper" ng-class="{'open': toggle}" ng-cloak>
     <!-- Sidebar -->
-    <div id="navbar-wrapper">
-      <ul class="navbar">
-        <li class="navbar-name">
+    <div id="navibar-wrapper">
+      <ul class="navibar">
+        <li class="navibar-name">
           <a ng-click="toggleSidebar()">
             Dashboard
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
-        <li class="navbar-title"><span>NAVIGATION</span></li>
-        <li class="navbar-menu">
+        <li class="navibar-title"><span>NAVIGATION</span></li>
+        <li class="navibar-menu">
           <a href="#/home">Home <span class="menu-icon fa fa-home"></span></a>
         </li>
-        <li class="navbar-menu">
-          <div id="navbar-submenu-wrapper" ng-class="{'accordion': navAccount}" ng-cloak>
+        <li class="navibar-menu">
+          <div id="navibar-submenu-wrapper" ng-class="{'accordion': navAccount}" ng-cloak>
             <a ng-click="toggleNavAccount()" href="#/account">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
-            <div class="navbar-submenu">
+            <div class="navibar-submenu">
               <a href="#/account_company_profile">Company Profile</a>
               <a href="#/account_password_api_token">Password / API Token</a>
               <a href="#/account_account_capability">Account Capability</a>
             </div>
           </div>
         </li>
-        <li class="navbar-menu">
-          <div id="navbar-submenu-wrapper" ng-class="{'accordion': navChannels}" ng-cloak>
+        <li class="navibar-menu">
+          <div id="navibar-submenu-wrapper" ng-class="{'accordion': navChannels}" ng-cloak>
             <a ng-click="toggleNavChannels()" href="#/channels">Channels <span class="menu-icon fa fa-cloud-upload"></span></a>
-            <div class="navbar-submenu">
+            <div class="navibar-submenu">
               <a href="#/channels_summary">Summary</a>
               <a href="#/channels_new_channel">New Channel</a>
               <a href="#/channels_view_channel">View Channel</a>
             </div>
           </div>
         </li>
-        <li class="navbar-menu">
-          <div id="navbar-submenu-wrapper" ng-class="{'accordion': navDevices}" ng-cloak>
+        <li class="navibar-menu">
+          <div id="navibar-submenu-wrapper" ng-class="{'accordion': navDevices}" ng-cloak>
             <a ng-click="toggleNavDevices()" href="#/devices">Devices <span class="menu-icon fa fa-laptop"></span></a>
-            <div class="navbar-submenu">
+            <div class="navibar-submenu">
               <a href="#/deivces_summary">Summary</a>
               <a href="#/devices_explore">Explore</a>
             </div>
           </div>
         </li>
-        <li class="navbar-menu">
-         <div id="navbar-submenu-wrapper" ng-class="{'accordion': navDashboards}" ng-cloak>
+        <li class="navibar-menu">
+         <div id="navibar-submenu-wrapper" ng-class="{'accordion': navDashboards}" ng-cloak>
             <a ng-click="toggleNavDashboards()" href="#/dashboards">Dashboards <span class="menu-icon fa fa-area-chart"></span></a>
-            <div class="navbar-submenu">
+            <div class="navibar-submenu">
               <a href="#/dashboards_summary">Summary</a>
               <a href="#/dashboards_dashboard">Dashboard</a>
               <a href="#/dashboards_explore">Explore</a>
             </div>
           </div>
         </li>
-        <li class="navbar-menu">
-          <div id="navbar-submenu-wrapper" ng-class="{'accordion': navSecurity}" ng-cloak>
+        <li class="navibar-menu">
+          <div id="navibar-submenu-wrapper" ng-class="{'accordion': navSecurity}" ng-cloak>
             <a ng-click="toggleNavSecurity()" href="#/security">Security <span class="menu-icon fa fa-lock"></span></a>
-            <div class="navbar-submenu">
+            <div class="navibar-submenu">
               <a href="#/deivces_summary">Summary</a>
               <a href="#/devices_explore">Explore</a>
             </div>
           </div>
         </li>
-        <li class="navbar-menu">
+        <li class="navibar-menu">
           <a href="#/auditlog">Audit Log <span class="menu-icon fa fa-file"></span></a>
         </li>
       </ul>
-      <div class="navbar-footer">
+      <div class="navibar-footer">
         <div class="col-xs-4">
           <a href="https://github.com/rdash/rdash-angular" target="_blank">
             Github
