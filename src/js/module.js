@@ -1,1 +1,1 @@
-angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies']);
+angular.module('RDash', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies']);
