@@ -1,1 +1,1 @@
-angular.module('RDash', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies']);
+angular.module('VivoDash', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies']);

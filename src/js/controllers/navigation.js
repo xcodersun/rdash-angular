@@ -2,7 +2,7 @@
  * Master Controller
  */
 
-angular.module('RDash')
+angular.module('VivoDash')
     .controller('Navigation', ['$scope', '$cookieStore', Navigation]);
 
 function Navigation($scope, $cookieStore) {

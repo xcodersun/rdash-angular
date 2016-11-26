@@ -4,7 +4,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('VivoDash')
     .directive('rdLoading', rdLoading);
 
 function rdLoading() {

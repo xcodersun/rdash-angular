@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" ng-app="RDash">
+<html lang="en" ng-app="VivoDash">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>RDash AngularJS</title>
+	<title>VivoDash AngularJS</title>
   <!-- STYLES -->
   <!-- build:css lib/css/main.min.css -->
   <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
       <ul class="navibar">
         <li class="navibar-name">
           <a ng-click="toggleSidebar()">
-            Dashboard
+            VivoDash
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
@@ -42,7 +42,7 @@
         </li>
         <li class="navibar-menu">
           <div id="navibar-submenu-wrapper" ng-class="{'accordion': navAccount}" ng-cloak>
-            <a ng-click="toggleNavAccount()" href="#/account">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
+            <a ng-click="toggleNavAccount()">Account <span class="menu-icon fa fa-user-circle-o"></span></a>
             <div class="navibar-submenu">
               <a href="#/account_company_profile">Company Profile</a>
               <a href="#/account_password_api_token">Password / API Token</a>
@@ -168,7 +168,7 @@
             </div>
             <div class="meta">
               <div class="page">
-                Dashboard
+                VivoDash
               </div>
               <div class="breadcrumb-links">
                 Home / Dashboard

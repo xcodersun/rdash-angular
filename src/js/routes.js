@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Route configuration for the RDash module.
+ * Route configuration for the VivoDash module.
  */
-angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
+angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
         // For unmatched routes
@@ -15,9 +15,9 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 templateUrl: 'templates/home.html'
             })
-            .state('account', {
-                url: '/account',
-                templateUrl: 'templates/account.html'
+            .state('account_company_profile', {
+                url: '/account_company_profile',
+                templateUrl: 'templates/MenuAccount/account_company_profile.html'
             })
             .state('channels', {
                 url: '/channels',

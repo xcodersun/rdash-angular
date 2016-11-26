@@ -3,7 +3,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('VivoDash')
     .directive('rdWidget', rdWidget);
 
 function rdWidget() {

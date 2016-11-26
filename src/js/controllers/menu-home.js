@@ -1,4 +1,4 @@
-angular.module('RDash')
+angular.module('VivoDash')
     .controller('MenuHome', ['$scope', MenuHome]);
 
 function MenuHome($scope) {
