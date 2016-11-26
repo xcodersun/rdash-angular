@@ -23,6 +23,10 @@ angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/account_api_token',
                 templateUrl: 'templates/MenuAccount/account_api_token.html'
             })
+            .state('account_bill_plan', {
+                url: '/account_bill_plan',
+                templateUrl: 'templates/MenuAccount/account_bill_plan.html'
+            })
             .state('channels', {
                 url: '/channels',
                 templateUrl: 'templates/channels.html'
