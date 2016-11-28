@@ -11,12 +11,13 @@ var gulp = require('gulp'),
     minifyHTML = require('gulp-htmlmin');
 
 var paths = {
-    scripts: 'src/js/**/*.*',
+    scripts: 'src/js/**/**/*.*',
     styles: 'src/less/**/*.*',
     images: 'src/img/**/*.*',
     templates: 'src/templates/**/*.html',
+    views: 'src/views/**/*.html',
     index: 'src/index.html',
-    bower_fonts: 'src/components/**/*.{ttf,woff,eof,svg}',
+    bower_fonts: 'src/components/**/*.{ttf,woff,eof,svg,woff2}',
     custom_fonts: 'src/fonts/**/*.{ttf,woff,eot,svg}',
 };
 
@@ -53,7 +54,7 @@ gulp.task('copy-custom_fonts', function() {
 /**
  * Handle custom files
  */
-gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-templates']);
+gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-templates', 'custom-views']);
 
 gulp.task('custom-images', function() {
     return gulp.src(paths.images)
@@ -80,6 +81,12 @@ gulp.task('custom-templates', function() {
         .pipe(gulp.dest('dist/templates'));
 });
 
+gulp.task('custom-views', function() {
+    return gulp.src(paths.views)
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('dist/views'));
+});
+
 /**
  * Watch custom files
  */
@@ -88,6 +95,7 @@ gulp.task('watch', function() {
     gulp.watch([paths.styles], ['custom-less']);
     gulp.watch([paths.scripts], ['custom-js']);
     gulp.watch([paths.templates], ['custom-templates']);
+    gulp.watch([paths.views], ['custom-views']);
     gulp.watch([paths.index], ['usemin']);
 });
 

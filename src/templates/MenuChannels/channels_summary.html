@@ -43,8 +43,10 @@
                             <td class="text-right">5960</td>
                             <td>draft</td>
                             <td class="text-center">
-                            	<button class="btn btn-success">Quick View</button>
-                            	<button class="btn btn-success">Details</button>
+                                <div ng-controller="ChannelsModalCtrl as $ctrl">
+                                    <button class="btn btn-success" ng-click="$ctrl.open('lg')">Quick View</button>
+                                    <a href="#/channels_view_channel" class="btn btn-success">Details</a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -54,8 +56,10 @@
                             <td class="text-right">2206</td>
                             <td>draft</td>
                             <td class="text-center">
-                            	<button class="btn btn-success">Quick View</button>
-                            	<button class="btn btn-success">Details</button>
+                                <div ng-controller="ChannelsModalCtrl as $ctrl">
+                                    <button class="btn btn-success" ng-click="$ctrl.open('lg')">Quick View</button>
+                                    <a href="#/channels_view_channel" class="btn btn-success">Details</a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
