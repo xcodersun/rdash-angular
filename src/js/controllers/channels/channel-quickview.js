@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('ChannelsModalCtrl', ['$uibModal', '$log', '$document', ChannelsModalCtrl]);
+    .controller('ChannelQuickView', ['$uibModal', '$log', '$document', ChannelQuickView]);
 
-function ChannelsModalCtrl($uibModal, $log, $document) {
+function ChannelQuickView($uibModal, $log, $document) {
   var $ctrl = this;
   $ctrl.animationsEnabled = true;
 
