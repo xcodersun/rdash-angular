@@ -39,9 +39,9 @@ angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/channels_view_channel',
                 templateUrl: 'templates/MenuChannels/channels_view_channel.html'
             })
-            .state('devices', {
-                url: '/devices',
-                templateUrl: 'templates/devices.html'
+            .state('devices_summary', {
+                url: '/devices_summary',
+                templateUrl: 'templates/MenuDevices/devices_summary.html'
             })
             .state('dashboards', {
                 url: '/dashboards',
