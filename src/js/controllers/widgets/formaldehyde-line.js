@@ -1,7 +1,7 @@
-angular.module("VivoDash").controller('FormaldehydeCtrl', ['$scope', FormaldehydeCtrl]);
+angular.module("VivoDash").controller('FormaldehydeLineCtrl', ['$scope', FormaldehydeLineCtrl]);
 
-function FormaldehydeCtrl ($scope) {
-  $scope.labels = ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"];
+function FormaldehydeLineCtrl ($scope) {
+  $scope.labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   $scope.series = ['Formaldehyde'];
   $scope.data = [
     [30, 50, 50, 40, 60, 80, 70]

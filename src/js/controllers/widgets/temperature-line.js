@@ -1,10 +1,10 @@
-angular.module("VivoDash").controller('HumidityCtrl', ['$scope', HumidityCtrl]);
+angular.module("VivoDash").controller('TemperatureLineCtrl', ['$scope', TemperatureLineCtrl]);
 
-function HumidityCtrl ($scope) {
-  $scope.labels = ["Monday", "Tuesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  $scope.series = ['Humidity'];
+function TemperatureLineCtrl ($scope) {
+  $scope.labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  $scope.series = ['Temperature'];
   $scope.data = [
-    [65, 48, 55, 45, 60, 53, 57]
+    [21, 18, 16, 17, 20, 23, 21]
   ];
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
