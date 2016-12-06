@@ -51,6 +51,10 @@ angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/dashboards_summary',
                 templateUrl: 'templates/MenuDashboards/dashboards_summary.html'
             })
+            .state('dashboards_dashboard', {
+                url: '/dashboards_dashboard',
+                templateUrl: 'templates/MenuDashboards/dashboards_dashboard.html'
+            })
             .state('security', {
                 url: '/security',
                 templateUrl: 'templates/security.html'
