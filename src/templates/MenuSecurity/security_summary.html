@@ -1,0 +1,80 @@
+<div class="row row-form alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
+	<rd-widget>
+		<rd-widget-body>
+			<div class="widget-icon blue pull-left">
+				<i class="fa fa-lock"></i>
+			</div>
+			<div class="widget-title">Security</div>
+		</rd-widget-body>
+	</rd-widget>
+</div>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Channel Security</div>
+			<div class="table-responsive">
+				<table class="table table-bordered table-contextual">
+	            	<thead>
+	        			<tr class="active">
+	            			<th>Name</th>
+	            			<th>ID</th>
+	            			<th>Permission</th>
+	            			<th>Encryption</th>
+	            			<th>Private Key</th>
+	            			<th>Public Key</th>
+	            			<th>certificate</th>
+	            		</tr>
+	            	</thead>
+	                <tbody>
+	                    <tr>
+	                        <td>Room Monitor</td>
+	                        <td>1</td>
+	                        <td>ReadWrite</td>
+	                        <td>AES256</td>
+	                        <td>xxxx</td>
+	                        <td>ABCD12345</td>
+	                        <td>example1.cert</td>
+	                    </tr>
+	                    <tr>
+	                        <td>Garage Monitor</td>
+	                        <td>2</td>
+	                        <td>ReadWrite</td>
+	                        <td>AES256</td>
+	                        <td>xxxx</td>
+	                        <td>12345ABCD</td>
+	                        <td>example2.cert</td>
+	                    </tr>
+	                </tbody>
+            	</table>
+            </div>
+        </div>
+    </div>
+	<div class="col-md-1"></div>
+</div>
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Storage Security</div>
+			<div class="panel-body">
+				<div class="col-md-2"></div>
+				<div class="col-md-8 form-group">
+					<label>Security level</label>
+					<select class="form-control">
+						<option>basic</option>
+						<option>advanced</option>
+						<option>top</option>
+					</select>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+<div class="row">
+	<div class="text-center">
+		<a class="btn btn-primary" href="#/security_setting">Update</a>
+	</div>
+</div>
