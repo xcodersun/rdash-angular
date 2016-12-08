@@ -63,6 +63,10 @@ angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/security_summary',
                 templateUrl: 'templates/MenuSecurity/security_summary.html'
             })
+            .state('security_setting', {
+                url: '/security_setting',
+                templateUrl: 'templates/MenuSecurity/security_setting.html'
+            })
             .state('auditlog', {
                 url: '/auditlog',
                 templateUrl: 'templates/audit_log.html'
