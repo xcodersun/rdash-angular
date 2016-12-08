@@ -25,9 +25,9 @@ By default, VivoDash Angular includes [`ui.bootstrap`](http://angular-ui.github.
 If you'd like to include any additional modules/packages not included with VivoDash Angular, add them to your `bower.json` file and then update the `src/index.html` file, to include them in the minified distribution output.
 
 ## Credits
-VivoDash Anuglar
+###VivoDash Anuglar
 * [Alex Sun](https://github.com/xcodersun)
-rdash-angular
+###rdash-angular
 * [Elliot Hesp](https://github.com/Ehesp)
 * [Leonel Samayoa](https://github.com/lsamayoa)
 * [Mathew Goldsborough](https://github.com/mgoldsborough)
