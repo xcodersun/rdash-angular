@@ -47,6 +47,11 @@ function Navigation($scope, $cookieStore) {
             } else {
                 $scope.navSecurity = true;
             }
+            if (angular.isDefined($cookieStore.get('navAuditLog'))) {
+                $scope.navAuditLog = ! $cookieStore.get('navAuditLog') ? false : true;
+            } else {
+                $scope.navAuditLog = true;
+            }
         } else {
             $scope.toggle = false;
             $scope.navAccount = false;
@@ -54,6 +59,7 @@ function Navigation($scope, $cookieStore) {
             $scope.navDevices = false;
             $scope.navDashboards = false;
             $scope.navSecurity = false;
+            $scope.navAuditLog = false;
         }
     });
 
@@ -87,6 +93,10 @@ function Navigation($scope, $cookieStore) {
         $cookieStore.put('navSecurity', $scope.navSecurity);
     }
 
+    $scope.toggleNavAuditLog = function() {
+        $scope.navAuditLog = !$scope.navAuditLog;
+        $cookieStore.put('navAuditLog', $scope.navAuditLog);
+    }
     window.onresize = function() {
         $scope.$apply();
     };

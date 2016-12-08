@@ -90,7 +90,12 @@
           </div>
         </li>
         <li class="navibar-menu">
-          <a href="#/auditlog">Audit Log <span class="menu-icon fa fa-file"></span></a>
+          <div id="navibar-submenu-wrapper" ng-class="{'accordion': navAuditLog}" ng-cloak>
+            <a ng-click="toggleNavAuditLog()">Audit Log <span class="menu-icon fa fa-file"></span></a>
+            <div class="navibar-submenu">
+              <a href="#/audit_log_summary">Summary</a>
+            </div>
+          </div>
         </li>
       </ul>
       <div class="navibar-footer">
