@@ -24,6 +24,7 @@ var config = {
     styles: [
         app + '**/*.less',
         'src/styles/common.less',
+        'src/styles/main.less',
     ],
     templates: app + '**/*.html',
     views: 'src/views/**/*.html',

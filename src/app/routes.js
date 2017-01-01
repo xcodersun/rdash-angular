@@ -33,6 +33,14 @@ angular.module('VivoDash').config(['$stateProvider', '$urlRouterProvider',
                 url: '/sidebar',
                 templateUrl: 'templates/layout/sidebar.html',
             })
+            .state('sidebar.home', {
+                url: '/home',
+                views: {
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-home/home.html'
+                    },
+                },
+            })
             .state('sidebar.account_company_profile', {
                 url: '/account_company_profile',
                 views: {

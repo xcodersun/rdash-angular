@@ -1,13 +1,18 @@
 /**
  * Header
  */
-.row.header {
-    height: 60px;
-    background: #fff;
-    margin-bottom: 15px;
-    & > div:last-child {
-        padding-right: 0;
-    }
+ .box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+.header {
+    .box-shadow(0 2px 5px rgba(0, 0, 0, 0.05));
+    height: 65px;
+    background: #ffffff;
+    border-radius: 5px;
+    border: px solid transparent;
     .meta {
         .page {
             font-size: 17px;
