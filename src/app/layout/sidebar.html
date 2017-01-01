@@ -1,0 +1,17 @@
+<div class="sidebar-header bg-primary">
+	<span class="menu-icon fa fa-home"></span>
+	VivoDash
+</div>
+<div class="siderbar-divider"></div>
+<uib-accordion close-others="oneAtATime">
+	<div uib-accordion-group class="panel-primary" is-open="account.open">
+		<uib-accordion-heading>
+		<span class="sidebar-menu-icon fa fa-user-circle-o"></span> Account <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': account.open, 'glyphicon-chevron-right': !account.open}"></i>
+		</uib-accordion-heading>
+		<ul class="nav">
+			<li><a ui-sref="sidebar.account_company_profile">Company Profile</a></li>
+			<li><a ui-sref="sidebar.account_api_token">Password / API Token</a></li>
+			<li><a ui-sref="sidebar.account_bill_plan">Bill / Plan</a></li>
+		</ul>
+	</div>
+</uib-accordion>
