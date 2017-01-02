@@ -2,7 +2,7 @@
 	<a ui-sref="sidebar.home({title:'home'})"><span class="menu-icon fa fa-home"></span>VivoDash</a>
 </div>
 <div class="siderbar-divider"></div>
-<uib-accordion close-others="oneAtATime">
+<uib-accordion close-others="true">
 	<div uib-accordion-group class="panel-primary" is-open="account.open">
 		<uib-accordion-heading>
 		<span class="sidebar-menu-icon fa fa-user-circle-o"></span> Account <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': account.open, 'glyphicon-chevron-right': !account.open}"></i>
@@ -11,6 +11,16 @@
 			<li><a ui-sref="sidebar.account_company_profile({title:'account'})">Company Profile</a></li>
 			<li><a ui-sref="sidebar.account_api_token({title:'account'})">Password / API Token</a></li>
 			<li><a ui-sref="sidebar.account_bill_plan({title:'account'})">Bill / Plan</a></li>
+		</ul>
+	</div>
+	<div uib-accordion-group class="panel-primary" is-open="channels.open">
+		<uib-accordion-heading>
+		<span class="sidebar-menu-icon fa fa-cloud-upload"></span> Channels <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': channels.open, 'glyphicon-chevron-right': !channels.open}"></i>
+		</uib-accordion-heading>
+		<ul class="nav">
+			<li><a ui-sref="sidebar.channels_summary({title:'channels'})">Summary</a></li>
+			<li><a ui-sref="sidebar.channels_new_channel({title:'channels'})">New Channel</a></li>
+			<li><a ui-sref="sidebar.channels_view_channel({title:'channels'})">View Channel</a></li>
 		</ul>
 	</div>
 </uib-accordion>

@@ -26,8 +26,13 @@ var config = {
         'src/styles/common.less',
         'src/styles/main.less',
     ],
-    templates: app + '**/*.html',
-    views: 'src/views/**/*.html',
+    layout: app + 'layout/*.html',
+    templates: [
+        app + '**/*.html',
+        '!' + app + 'layout/*.html',
+        '!' + app + 'views/*.html'
+    ],
+    views: app + 'views/*.html',
     index: 'src/index.html',
 };
 
@@ -64,7 +69,7 @@ gulp.task('copy-custom_fonts', function() {
 /**
  * Handle custom files
  */
-gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-templates', 'custom-views']);
+gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-layout', 'custom-templates', 'custom-views']);
 
 gulp.task('custom-images', function() {
     return gulp.src(config.images)
@@ -83,6 +88,12 @@ gulp.task('custom-less', function() {
         .pipe(less())
         .pipe(concat('custom.min.css'))
         .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('custom-layout', function() {
+    return gulp.src(config.layout)
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('dist/layout'));
 });
 
 gulp.task('custom-templates', function() {
@@ -104,6 +115,7 @@ gulp.task('watch', function() {
     gulp.watch([config.images], ['custom-images']);
     gulp.watch([config.styles], ['custom-less']);
     gulp.watch([config.js], ['custom-js']);
+    gulp.watch([config.layout], ['custom-layout']);
     gulp.watch([config.templates], ['custom-templates']);
     gulp.watch([config.views], ['custom-views']);
     gulp.watch([config.index], ['usemin']);
@@ -128,7 +140,6 @@ gulp.task('livereload', function() {
 
 gulp.task('clean', function() {
     del('./dist');
-
 });
 /**
  * Gulp tasks

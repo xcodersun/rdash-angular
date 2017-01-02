@@ -1,15 +1,5 @@
 <div class="container-fluid">
-	<div class="row row-form alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
-		<rd-widget>
-			<rd-widget-body>
-				<div class="widget-icon blue pull-left">
-					<i class="fa fa-cloud-upload"></i>
-				</div>
-				<div class="widget-title">Channels</div>
-			</rd-widget-body>
-		</rd-widget>
-	</div>
-	<div class="row row-form">
+	<div class="row">
 		<div class="col-md-4">
 	        <div class="input-group">
 	            <span class="input-group-btn">
@@ -45,7 +35,7 @@
                             <td class="text-center">
                                 <div ng-controller="ChannelQuickView as $cqv">
                                     <button class="btn btn-success" ng-click="$cqv.open('lg')">QuickView</button>
-                                    <a href="#/channels_view_channel" class="btn btn-success">Details</a>
+                                    <a ui-sref="sidebar.channels_view_channel({title:'channels'})" class="btn btn-success">Details</a>
                                 </div>
                             </td>
                         </tr>
@@ -58,7 +48,7 @@
                             <td class="text-center">
                                 <div ng-controller="ChannelQuickView as $cqv">
                                     <button class="btn btn-success" ng-click="$cqv.open('lg')">QuickView</button>
-                                    <a href="#/channels_view_channel" class="btn btn-success">Details</a>
+                                    <a ui-sref="sidebar.channels_view_channel({title:'channels'})" class="btn btn-success">Details</a>
                                 </div>
                             </td>
                         </tr>
@@ -66,7 +56,7 @@
                 </table>
             </div>
             <fieldset class="form-group text-center">
-                <a href="#/channels_new_channel" class="btn btn-primary">Create New Channel</button>
+                <a ui-sref="sidebar.channels_new_channel({title:'channels'})" class="btn btn-primary">Create New Channel</button>
             </fieldset>
         </div>
 		<div class="col-md-1"></div>

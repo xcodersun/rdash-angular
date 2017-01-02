@@ -8,7 +8,7 @@ angular.module('VivoDash')
     function($stateProvider, $urlRouterProvider) {
 
         // For unmatched routes
-        $urlRouterProvider.otherwise('/sidebar');
+        $urlRouterProvider.otherwise('/sidebar/home/home');
 
         // Application routes
         $stateProvider
@@ -16,32 +16,32 @@ angular.module('VivoDash')
                 abstract: true,
                 views: {
                     '@' : {
-                        templateUrl: 'templates/layout/layout.html',
+                        templateUrl: 'layout/layout.html',
                     },
                     'layout-left@index': {
-                        templateUrl: 'templates/layout/left.html',
+                        templateUrl: 'layout/left.html',
                     },
                     'layout-top@index': {
-                        templateUrl: 'templates/layout/top.html',
+                        templateUrl: 'layout/top.html',
                     },
                     'layout-middle@index': {
-                        templateUrl: 'templates/layout/middle.html',
+                        templateUrl: 'layout/middle.html',
                     },
                     'layout-main@index': {
-                        templateUrl: 'templates/layout/main.html',
+                        templateUrl: 'layout/main.html',
                     },
                 },
             })
             .state('sidebar', {
                 parent: 'index',
                 url: '/sidebar',
-                templateUrl: 'templates/layout/sidebar.html',
+                templateUrl: 'layout/sidebar.html',
             })
             .state('sidebar.home', {
                 url: '/home/:title',
                 views: {
                     'title@index' : {
-                        templateUrl: 'templates/layout/title.html',
+                        templateUrl: 'layout/title.html',
                         controller: 'TitleCtrl',
                     },
                     'detail@index' : {
@@ -53,7 +53,7 @@ angular.module('VivoDash')
                 url: '/account_company_profile/:title',
                 views: {
                     'title@index' : {
-                        templateUrl: 'templates/layout/title.html',
+                        templateUrl: 'layout/title.html',
                         controller: 'TitleCtrl',
                     },
                     'detail@index' : {
@@ -65,7 +65,7 @@ angular.module('VivoDash')
                 url: '/account_api_token/:title',
                 views: {
                     'title@index' : {
-                        templateUrl: 'templates/layout/title.html',
+                        templateUrl: 'layout/title.html',
                         controller: 'TitleCtrl',
                     },
                     'detail@index' : {
@@ -77,11 +77,47 @@ angular.module('VivoDash')
                 url: '/account_bill_plan/:title',
                 views: {
                     'title@index' : {
-                        templateUrl: 'templates/layout/title.html',
+                        templateUrl: 'layout/title.html',
                         controller: 'TitleCtrl',
                     },
                     'detail@index' : {
                         templateUrl: 'templates/menu-account/account_bill_plan.html'
+                    },
+                },
+            })
+            .state('sidebar.channels_summary', {
+                url: '/channels_summary/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-channels/channels_summary.html'
+                    },
+                },
+            })
+            .state('sidebar.channels_new_channel', {
+                url: '/channels_new_channel/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-channels/channels_new_channel.html'
+                    },
+                },
+            })
+            .state('sidebar.channels_view_channel', {
+                url: '/channels_view_channel/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-channels/channels_view_channel.html'
                     },
                 },
             })
@@ -97,6 +133,9 @@ function TitleCtrl($scope, $stateParams) {
             break;
         case 'account':
             $scope.icon = 'fa fa-user-circle-o';
+            break;
+        case 'channels':
+            $scope.icon = 'fa fa-cloud-upload';
             break;
     }
 }
