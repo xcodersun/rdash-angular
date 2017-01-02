@@ -145,6 +145,42 @@ angular.module('VivoDash')
                     },
                 },
             })
+            .state('sidebar.dashboards_summary', {
+                url: '/dashboards_summary/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-dashboards/dashboards_summary.html'
+                    },
+                },
+            })
+            .state('sidebar.dashboards_dashboard', {
+                url: '/dashboards_dashboard/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-dashboards/dashboards_dashboard.html'
+                    },
+                },
+            })
+            .state('sidebar.dashboards_explore', {
+                url: '/dashboards_explore/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-dashboards/dashboards_explore.html'
+                    },
+                },
+            })
     }
 ]).controller('TitleCtrl', ['$scope', '$stateParams', TitleCtrl])
 
@@ -163,6 +199,9 @@ function TitleCtrl($scope, $stateParams) {
             break;
         case 'devices':
             $scope.icon = 'fa fa-laptop';
+            break;
+        case 'dashboards':
+            $scope.icon = 'fa fa-area-chart';
             break;
     }
 }
