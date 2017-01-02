@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-4">
+        <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default glyphicon glyphicon-search" type="button"></button>
+            </span>
+            <input type="text" class="form-control search-bar" placeholder="Search">
+        </div>
+    </div>
+    <div class="col-md-8"></div>
+</div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="table-responsive">
+      <table class="table table-contextual">
+        <thead>
+          <th>Status</th>
+          <th>Name</th>
+          <th>IP</th>
+          <th>Channel</th>
+          <th>Location</th>
+          <th>ID</th>
+          <th>Fields</th>
+          <th>Tags</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="glyphicon glyphicon-ok-sign text-success"></span></td>
+            <td>Air Purifier</td>
+            <td>50.184.2.167</td>
+            <td>Room Monitor</td>
+            <td>Milpitas</td>
+            <td>1</td>
+            <td>temperature, humidity, formalehyde</td>
+            <td>bedroom1, guest-room</td>
+            <td class="text-center">
+                <div ng-controller="DeviceQuickView as $dqv">
+                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="glyphicon glyphicon-remove-sign text-danger"></span></td>
+            <td>Edison</td>
+            <td>50.184.2.167</td>
+            <td>Garage Monitor</td>
+            <td>Milpitas</td>
+            <td>1</td>
+            <td>brightness</td>
+            <td>garage</td>
+            <td class="text-center">
+                <div ng-controller="DeviceQuickView as $dqv">
+                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="glyphicon glyphicon-info-sign text-warning"></span></td>
+            <td>RaspberryPi</td>
+            <td>50.184.2.167</td>
+            <td>Door Bell</td>
+            <td>Milpitas</td>
+            <td>1</td>
+            <td>face</td>
+            <td>front-door</td>
+            <td class="text-center">
+                <div ng-controller="DeviceQuickView as $dqv">
+                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="pagination pagination-sm pull-right">
+      <li><a>&laquo;</a></li>
+      <li><a>1</a></li>
+      <li><a>&raquo;</a></li>
+    </ul>
+  </div>
+  <div class="col-md-1"></div>
+</div>

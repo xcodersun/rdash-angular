@@ -9,23 +9,37 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     rename = require('gulp-rename'),
     minifyHTML = require('gulp-htmlmin');
+    del = require('del');
 
-var paths = {
-    scripts: 'src/js/**/**/*.*',
-    styles: 'src/less/**/*.*',
-    images: 'src/img/**/*.*',
-    templates: 'src/templates/**/*.html',
-    views: 'src/views/**/*.html',
-    index: 'src/index.html',
+var app = './src/app/'
+
+var config = {
     bower_fonts: 'src/components/**/*.{ttf,woff,eof,svg,woff2}',
     custom_fonts: 'src/fonts/**/*.{ttf,woff,eot,svg}',
+    images: 'src/img/**/*.*',
+    js: [
+        app + '*.js',
+        app + '**/*.js',
+    ],
+    styles: [
+        app + '**/*.less',
+        'src/styles/*.less',
+    ],
+    layout: app + 'layout/*.html',
+    templates: [
+        app + '**/*.html',
+        '!' + app + 'layout/*.html',
+        '!' + app + 'views/*.html'
+    ],
+    views: app + 'views/*.html',
+    index: 'src/index.html',
 };
 
 /**
  * Handle bower components from index
  */
 gulp.task('usemin', function() {
-    return gulp.src(paths.index)
+    return gulp.src(config.index)
         .pipe(usemin({
             js: [minifyJs(), 'concat'],
             css: [minifyCss({keepSpecialComments: 0}), 'concat'],
@@ -39,7 +53,7 @@ gulp.task('usemin', function() {
 gulp.task('build-assets', ['copy-bower_fonts', 'copy-custom_fonts']);
 
 gulp.task('copy-bower_fonts', function() {
-    return gulp.src(paths.bower_fonts)
+    return gulp.src(config.bower_fonts)
         .pipe(rename({
             dirname: '/fonts'
         }))
@@ -47,42 +61,48 @@ gulp.task('copy-bower_fonts', function() {
 });
 
 gulp.task('copy-custom_fonts', function() {
-    return gulp.src(paths.custom_fonts)
+    return gulp.src(config.custom_fonts)
         .pipe(gulp.dest('dist/fonts'));
 });
 
 /**
  * Handle custom files
  */
-gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-templates', 'custom-views']);
+gulp.task('build-custom', ['custom-images', 'custom-js', 'custom-less', 'custom-layout', 'custom-templates', 'custom-views']);
 
 gulp.task('custom-images', function() {
-    return gulp.src(paths.images)
+    return gulp.src(config.images)
         .pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('custom-js', function() {
-    return gulp.src(paths.scripts)
+    return gulp.src(config.js)
         .pipe(minifyJs())
-        .pipe(concat('dashboard.min.js'))
+        .pipe(concat('vivodash.min.js'))
         .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('custom-less', function() {
-    return gulp.src(paths.styles)
+    return gulp.src(config.styles)
         .pipe(less())
         .pipe(concat('custom.min.css'))
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('custom-layout', function() {
+    return gulp.src(config.layout)
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('dist/layout'));
+});
+
 gulp.task('custom-templates', function() {
-    return gulp.src(paths.templates)
+    return gulp.src(config.templates)
         .pipe(minifyHTML())
         .pipe(gulp.dest('dist/templates'));
 });
 
 gulp.task('custom-views', function() {
-    return gulp.src(paths.views)
+    return gulp.src(config.views)
         .pipe(minifyHTML())
         .pipe(gulp.dest('dist/views'));
 });
@@ -91,12 +111,13 @@ gulp.task('custom-views', function() {
  * Watch custom files
  */
 gulp.task('watch', function() {
-    gulp.watch([paths.images], ['custom-images']);
-    gulp.watch([paths.styles], ['custom-less']);
-    gulp.watch([paths.scripts], ['custom-js']);
-    gulp.watch([paths.templates], ['custom-templates']);
-    gulp.watch([paths.views], ['custom-views']);
-    gulp.watch([paths.index], ['usemin']);
+    gulp.watch([config.images], ['custom-images']);
+    gulp.watch([config.styles], ['custom-less']);
+    gulp.watch([config.js], ['custom-js']);
+    gulp.watch([config.layout], ['custom-layout']);
+    gulp.watch([config.templates], ['custom-templates']);
+    gulp.watch([config.views], ['custom-views']);
+    gulp.watch([config.index], ['usemin']);
 });
 
 /**
@@ -116,6 +137,9 @@ gulp.task('livereload', function() {
         .pipe(connect.reload());
 });
 
+gulp.task('clean', function() {
+    del('./dist');
+});
 /**
  * Gulp tasks
  */
