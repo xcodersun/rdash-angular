@@ -205,6 +205,18 @@ angular.module('VivoDash')
                     },
                 },
             })
+            .state('sidebar.audit_log_summary', {
+                url: '/audit_log_summary/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-auditlog/audit_log_summary.html'
+                    },
+                },
+            })
     }
 ]).controller('TitleCtrl', ['$scope', '$stateParams', TitleCtrl])
 
@@ -230,5 +242,7 @@ function TitleCtrl($scope, $stateParams) {
         case 'security':
             $scope.icon = 'fa fa-lock';
             break;
+        case 'auditlog':
+            $scope.icon = 'fa fa-file'
     }
 }

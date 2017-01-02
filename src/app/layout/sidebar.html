@@ -51,4 +51,12 @@
 			<li><a ui-sref="sidebar.security_setting({title:'security'})">Setting</a></li>
 		</ul>
 	</div>
+	<div uib-accordion-group class="panel-primary" is-open="auditlog.open">
+		<uib-accordion-heading>
+		<span class="sidebar-menu-icon fa fa-file"></span> Audit Log <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': auditlog.open, 'glyphicon-chevron-right': !auditlog.open}"></i>
+		</uib-accordion-heading>
+		<ul class="nav">
+			<li><a ui-sref="sidebar.audit_log_summary({title:'auditlog'})">Summary</a></li>
+		</ul>
+	</div>
 </uib-accordion>
