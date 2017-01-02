@@ -121,6 +121,30 @@ angular.module('VivoDash')
                     },
                 },
             })
+            .state('sidebar.devices_summary', {
+                url: '/devices_summary/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-devices/devices_summary.html'
+                    },
+                },
+            })
+            .state('sidebar.devices_explore', {
+                url: '/devices_explore/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-devices/devices_explore.html'
+                    },
+                },
+            })
     }
 ]).controller('TitleCtrl', ['$scope', '$stateParams', TitleCtrl])
 
@@ -136,6 +160,9 @@ function TitleCtrl($scope, $stateParams) {
             break;
         case 'channels':
             $scope.icon = 'fa fa-cloud-upload';
+            break;
+        case 'devices':
+            $scope.icon = 'fa fa-laptop';
             break;
     }
 }

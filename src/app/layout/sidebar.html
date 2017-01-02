@@ -23,4 +23,13 @@
 			<li><a ui-sref="sidebar.channels_view_channel({title:'channels'})">View Channel</a></li>
 		</ul>
 	</div>
+	<div uib-accordion-group class="panel-primary" is-open="devices.open">
+		<uib-accordion-heading>
+		<span class="sidebar-menu-icon fa fa-laptop"></span> Devices <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': devices.open, 'glyphicon-chevron-right': !devices.open}"></i>
+		</uib-accordion-heading>
+		<ul class="nav">
+			<li><a ui-sref="sidebar.devices_summary({title:'devices'})">Summary</a></li>
+			<li><a ui-sref="sidebar.devices_explore({title:'devices'})">Explore</a></li>
+		</ul>
+	</div>
 </uib-accordion>
