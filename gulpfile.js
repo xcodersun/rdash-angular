@@ -23,8 +23,7 @@ var config = {
     ],
     styles: [
         app + '**/*.less',
-        'src/styles/common.less',
-        'src/styles/main.less',
+        'src/styles/*.less',
     ],
     layout: app + 'layout/*.html',
     templates: [
