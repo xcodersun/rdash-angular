@@ -1,5 +1,5 @@
 # VivoDash Angular
-## Responsive, bloat free, bootstrap powered admin style dashboard developed from rdash-angular
+## Responsive, agularjs, bootstrap powered admin style dashboard
 
 ## Usage
 ### Requirements

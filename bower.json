@@ -1,12 +1,13 @@
 {
-    "name": "rdash-angular",
+    "name": "vivodash",
     "version": "0.0.1",
-    "description": "An AngularJS implementation of the responsive dashboard",
-    "homepage": "https://github.com/Ehesp/Responsive-Dashboard",
+    "description": "An AngularJS implementation of the responsive dashboard for eywa project",
+    "homepage": "https://github.com/xcodersun",
     "authors": [
-        "Elliot Hesp <elliot.hesp@gmail.com>"
+        "Alex Sun <xcodersun@gmail.com>"
     ],
     "contributors": [
+        "Elliot Hesp <elliot.hesp@gmail.com>",
         "Ricardo Pascua Jr <rdpascua@outlook.com>",
         "Leonel Samayoa <leonel.e.samayoa@gmail.com>"
     ],
@@ -24,7 +25,7 @@
         "angular-animate": "~1.5.9",
         "angular-touch": "~1.5.9",
         "angular-cookies": "~1.5.9",
-        "angular-bootstrap": "~2.2.0",
+        "angular-bootstrap": "~2.3.1",
         "angular-ui-router": "~0.3.2",
         "angular-chart.js": "~1.0.3",
         "bootstrap": "~3.3.7",
@@ -32,6 +33,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/rdash/rdash-angular"
+        "url": "https://github.com/xcodersun/vivodash"
     }
 }
