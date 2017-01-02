@@ -42,4 +42,13 @@
 			<li><a ui-sref="sidebar.dashboards_explore({title:'dashboards'})">Explore</a></li>
 		</ul>
 	</div>
+	<div uib-accordion-group class="panel-primary" is-open="security.open">
+		<uib-accordion-heading>
+		<span class="sidebar-menu-icon fa fa-lock"></span> Security <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': security.open, 'glyphicon-chevron-right': !security.open}"></i>
+		</uib-accordion-heading>
+		<ul class="nav">
+			<li><a ui-sref="sidebar.security_summary({title:'security'})">Summary</a></li>
+			<li><a ui-sref="sidebar.security_setting({title:'security'})">Setting</a></li>
+		</ul>
+	</div>
 </uib-accordion>

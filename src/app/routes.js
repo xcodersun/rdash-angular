@@ -181,6 +181,30 @@ angular.module('VivoDash')
                     },
                 },
             })
+            .state('sidebar.security_summary', {
+                url: '/security_summary/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-security/security_summary.html'
+                    },
+                },
+            })
+            .state('sidebar.security_setting', {
+                url: '/security_setting/:title',
+                views: {
+                    'title@index' : {
+                        templateUrl: 'layout/title.html',
+                        controller: 'TitleCtrl',
+                    },
+                    'detail@index' : {
+                        templateUrl: 'templates/menu-security/security_setting.html'
+                    },
+                },
+            })
     }
 ]).controller('TitleCtrl', ['$scope', '$stateParams', TitleCtrl])
 
@@ -202,6 +226,9 @@ function TitleCtrl($scope, $stateParams) {
             break;
         case 'dashboards':
             $scope.icon = 'fa fa-area-chart';
+            break;
+        case 'security':
+            $scope.icon = 'fa fa-lock';
             break;
     }
 }
