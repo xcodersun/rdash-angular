@@ -2,24 +2,16 @@ angular.module('VivoDash')
 	.factory('userService', userService);
 
 function userService() {
-	var usersMock = {
-		'root': {
+	var service = {};
+	service.getCredentials = getCredentials;
+
+	return service;
+
+	function getCredentials() {
+		var usersMock = {
 			username: 'root',
 			password: 'waterISwide',
-		},
-	}
-	var userService = {
-		user: undefined,
-		login: function(userCredentials) {
-			var user = usersMock[userCredentials.username]
-			userService.user = (user && (user.password == userCredentials.password)) ?
-				user : undefined;
-			return user;
-		},
-		logout: function() {
-			userService.user = undefined;
 		}
+		return usersMock;
 	}
-
-	return userService;
 }

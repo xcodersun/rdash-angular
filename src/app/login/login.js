@@ -1,13 +1,16 @@
 angular.module('VivoDash')
-  .controller('LoginCtrl', ['$scope', '$state', 'userService', LoginCtrl]);
+  .controller('LoginCtrl', ['$state', 'userService', 'authenticationService', LoginCtrl]);
 
-function LoginCtrl($scope, $state, userService) {
-  $scope.login = function(cred) {
-    var user = userService.login(cred);
-    if (angular.isUndefined(user)) {
-      alert('username or password incorrect.')
-    } else {
+function LoginCtrl($state, userService, authenticationService) {
+  var lc = this;
+
+  lc.login = function() {
+    var response = authenticationService.login(lc.username, lc.password);
+    if (response.success) {
+      authenticationService.setCredentials(lc.username, lc.password);
       $state.go('sidebar.home', {title:'home'}); 
+    } else {
+      alert('username or password incorrect.')
     }
   };
 }
