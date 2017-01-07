@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-	.factory('base64Service', base64Service);
+	.factory('Base64Service', Base64Service);
 
-function base64Service() {
+function Base64Service() {
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   
     return {

@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+        <div class="alert alert-info">
+            Username: root<br />
+            Password: waterISwide
+        </div>
+        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
         <div ng-view></div>
         <h2>VivoDash Login</h2>
         <form name="form" ng-submit="lc.login()" role="form">

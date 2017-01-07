@@ -1,25 +1,25 @@
 angular.module('VivoDash')
-  .controller('LoginCtrl', ['$state', 'authenticationService', 'flashService', LoginCtrl]);
+  .controller('LoginCtrl', ['$state', 'AuthenticationService', 'FlashService', LoginCtrl]);
 
-function LoginCtrl($state, authenticationService, flashService) {
+function LoginCtrl($state, AuthenticationService, FlashService) {
   var lc = this;
   lc.username = 'root';
   lc.password = 'waterISwide';
 
   lc.login = function() {
-    authenticationService.login(lc.username, lc.password)
+    AuthenticationService.login(lc.username, lc.password)
     .then(success).catch(fail);
 
     function success(response) {
       token = response.data.auth_token;
       tokenExpired = response.data.expires_at;
 
-      authenticationService.setCredentials(token, tokenExpired);
+      AuthenticationService.setCredentials(token, tokenExpired);
       $state.go('sidebar.home', {title:'home'}); 
     };
 
     function fail(e) {
-      flashService.error('username or password incorrect.');
+      FlashService.error('username or password incorrect.');
     }
   };
 }

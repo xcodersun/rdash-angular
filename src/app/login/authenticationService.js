@@ -1,8 +1,8 @@
 angular.module('VivoDash')
-	.factory('authenticationService', authenticationService);
+	.factory('AuthenticationService', AuthenticationService);
 
-authenticationService.$inject = ['$http', '$cookies', 'base64Service'];
-function authenticationService($http, $cookies, base64Service) {
+AuthenticationService.$inject = ['$http', '$cookies', 'Base64Service'];
+function AuthenticationService($http, $cookies, Base64Service) {
 	var service = {};
 	service.login = login;
 	service.setCredentials = setCredentials;
@@ -11,7 +11,7 @@ function authenticationService($http, $cookies, base64Service) {
 
 	function login(username, password) {
 		var apiUrl= 'http://localhost:8080/admin/login';
-		var authdata = base64Service.encode(username + ':' + password);
+		var authdata = Base64Service.encode(username + ':' + password);
 		return $http({
 			url: apiUrl,
 			method: 'GET',
