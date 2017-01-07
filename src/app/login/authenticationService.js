@@ -1,8 +1,8 @@
 angular.module('VivoDash')
 	.factory('authenticationService', authenticationService);
 
-authenticationService.$inject = ['$http', '$cookies', 'userService'];
-function authenticationService($http, $cookies, userService) {
+authenticationService.$inject = ['$http', '$cookies', 'base64Service'];
+function authenticationService($http, $cookies, base64Service) {
 	var service = {};
 	service.login = login;
 	service.setCredentials = setCredentials;
@@ -10,23 +10,23 @@ function authenticationService($http, $cookies, userService) {
 	return service;
 
 	function login(username, password) {
-		var credentials = userService.getCredentials();
-
-		if (username == credentials.username && password == credentials.password) {
-			return { success: true };
-		} else {
-			return { success: false, meesage: 'Username or Password is incorrect' };
-		}
+		var apiUrl= 'http://localhost:8080/admin/login';
+		var authdata = base64Service.encode(username + ':' + password);
+		return $http({
+			url: apiUrl,
+			method: 'GET',
+			headers: {
+				'Authorization':'Basic ' + authdata
+			},
+		})
 	}
 
-	function setCredentials(username, password) {
-		currentUser = {
-			username: username,
-			password: password
-		};
-
-		var cookieExp = new Date();
-		cookieExp.setSeconds(cookieExp.getSeconds() + 10);
-		$cookies.putObject('currentUser', currentUser, {'expires' : cookieExp});
+	function setCredentials(token, expires) {
+		var authToken = {
+			token: token,
+			expires: expires,
+		}
+		var cookieExp = new Date(expires);
+		$cookies.putObject('authToken', authToken, {'expires' : cookieExp});
 	}
 }

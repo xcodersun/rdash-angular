@@ -2,10 +2,8 @@ angular.module('VivoDash')
 	.run(['$rootScope', '$state', '$cookies', redirect]);
 
 function redirect($rootScope, $state, $cookies) {
-
 	$rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
-		var loggedIn = $rootScope.globals;
-		var currentUser = $cookies.getObject('currentUser') || undefined;
+		var currentUser = $cookies.getObject('authToken') || undefined;
 
 		if (toState.name != "login" && angular.isUndefined(currentUser)) {
 			// prevent initial state change
