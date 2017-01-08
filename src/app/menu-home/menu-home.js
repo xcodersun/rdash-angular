@@ -4,8 +4,9 @@ angular.module('VivoDash')
 function MenuHomeCtrl($http, $cookies, config) {
   var mhc = this;
 
-  mhc.myInterval = 3000;
+  mhc.myInterval = 5000;
   mhc.noWrapSlides = false;
+  mhc.noPause = true;
   mhc.active = 0;
   mhc.slides = [];
 
@@ -13,7 +14,7 @@ function MenuHomeCtrl($http, $cookies, config) {
   return;
 
   function initialization() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 4; i++) {
       addSlide(i);
     }
 

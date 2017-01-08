@@ -7,7 +7,7 @@
         </div>
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
         <div ng-view></div>
-        <h2>VivoDash Login</h2>
+        <h2 style="text-align:center">VivoDash Login</h2>
         <form name="form" ng-submit="lc.login()" role="form">
             <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
                 <label for="username">Username</label>
