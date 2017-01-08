@@ -1,8 +1,8 @@
 angular.module('VivoDash')
-	.factory('FlashService', FlashService);
+	.factory('flashService', flashService);
 
-FlashService.$inject = ['$rootScope'];
-function FlashService($rootScope) {
+flashService.$inject = ['$rootScope'];
+function flashService($rootScope) {
 	var service = {};
 	service.success = success;
 	service.error = error;

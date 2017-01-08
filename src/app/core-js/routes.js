@@ -53,6 +53,8 @@ function routes($stateProvider, $urlRouterProvider) {
             },
             'detail@index' : {
                 templateUrl: 'templates/menu-home/home.html',
+                controller: 'MenuHomeCtrl',
+                controllerAs: 'mhc',
             },
         },
     })

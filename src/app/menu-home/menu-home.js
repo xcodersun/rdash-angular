@@ -1,21 +1,49 @@
 angular.module('VivoDash')
-    .controller('MenuHome', ['$scope', MenuHome]);
+    .controller('MenuHomeCtrl', ['$http', '$cookies', 'config', MenuHomeCtrl]);
 
-function MenuHome($scope) {
-  $scope.myInterval = 3000;
-  $scope.noWrapSlides = false;
-  $scope.active = 0;
-  var slides = $scope.slides = [];
-  var currIndex = 0;
+function MenuHomeCtrl($http, $cookies, config) {
+  var mhc = this;
 
-  $scope.addSlide = function() {
-    slides.push({
+  mhc.myInterval = 3000;
+  mhc.noWrapSlides = false;
+  mhc.active = 0;
+  mhc.slides = [];
+
+  initialization();
+  return;
+
+  function initialization() {
+    for (var i = 0; i < 2; i++) {
+      addSlide(i);
+    }
+
+    var authToken = $cookies.getObject('authToken')
+
+    $http({
+      url: config.apiAdminSummary,
+      method: 'GET',
+      headers: {
+        'Authentication': authToken.token
+      },
+    }).then(success).catch(fail);
+
+    function success(response) {
+      mhc.channels = response.data.channels;
+      mhc.dashboards = response.data.dashboards;
+      mhc.devices = response.data.devices;
+    }
+
+    function fail(e) {
+      mhc.channels = 0;
+      mhc.dashboards = 0;
+      mhc.devices = 0;
+    }
+  }
+
+  function addSlide(currIndex) {
+    mhc.slides.push({
       image: '/img/slide_' + currIndex + '.png',
       id: currIndex++
     });
-  };
-
-  for (var i = 0; i < 2; i++) {
-    $scope.addSlide();
   }
 }
