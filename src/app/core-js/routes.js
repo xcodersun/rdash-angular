@@ -102,7 +102,9 @@ function routes($stateProvider, $urlRouterProvider) {
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-channels/channels_summary.html'
+                templateUrl: 'templates/menu-channels/channels_summary.html',
+                controller: 'ChannelsSummaryCtrl',
+                controllerAs: 'csc',
             },
         },
     })
