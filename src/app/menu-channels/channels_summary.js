@@ -2,10 +2,10 @@ angular.module('VivoDash')
     .controller('ChannelsSummaryCtrl', ['$http', '$cookies', 'config', ChannelsSummaryCtrl]);
 
 function ChannelsSummaryCtrl($http, $cookies, config) {
-	var csc = this
-	csc.channels = {}
+	var csc = this;
+	csc.channels = {};
 
-	var authToken = $cookies.getObject('authToken')
+	var authToken = $cookies.getObject('authToken');
 
 	$http({
 		url: config.apiAdminChannelsSummary,
