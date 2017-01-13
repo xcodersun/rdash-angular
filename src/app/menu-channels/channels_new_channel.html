@@ -1,61 +1,60 @@
-<div ng-controller="ChannelTagCtrl">
-    <div class="container-fluid">
-        <div class="row">
-    		<div class="col-md-3"></div>
-    		<div class="col-md-6">
-                <fieldset class="form-group">
-                    <label>Name</label>
-                    <input class="form-control">
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control">
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Tag</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="tag">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" ng-click="addTag()">+</button>
-                        </span>
-                    </div>
-                    <div ng-repeat="t in tags">
-                        <label>{{t}}</label>
-                        <button class="btn btn-xs btn-danger" ng-click="removeTag($index)">-</button>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Fields</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="field">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" ng-click="addField()">+</button>
-                        </span>
-                    </div>
-                    <div ng-repeat="f in fields">
-                        <label>{{f}}</label>
-                        <button class="btn btn-xs btn-danger" ng-click="removeField($index)">-</button>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Access Token</label>
-                    <input class="form-control">
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Connection Limits</label>
-                    <input class="form-control">
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Message Rate</label>
-                    <input class="form-control">
-                </fieldset>
-                <fieldset class="form-group text-center">
-                    <button type="submit" class="btn btn-primary">Reset</button>
-                    <a href="#/channels_summary" class="btn btn-primary">Cancel</a>
-                    <button class="btn btn-primary" ng-controller="ChannelCreate as $cc" ng-click="$cc.open('lg')">Create</button>
-                </fieldset>
+<form class="row" name="form" ng-submit="cnc.submit()">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+        <div class="form-group">
+            <label for="name" >Name</label>
+            <input class="form-control" name="name" id="name" ng-model="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" id="description" ng-model="description" required>
+        </div>
+        <div class="form-group">
+            <label>Fields</label>
+            <div>
+                <div class="col-md-4">
+                    <select class="form-control" name="field_type" id="field_type" ng-model="field_type">
+                        <option>int</option>
+                        <option selected>float</option>
+                        <option>boolean</option>
+                        <option>string</option>
+                    </select>
+                </div>
+                <div class="col-md-8 input-group">
+                    <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name">
+                    <span class="input-group-btn">
+                        <a class="btn btn-primary" ng-click="cnc.addField()">+</a>
+                    </span>
+                </div>
             </div>
-    		<div class="col-md-3"></div>
-    	</div>
+            <span ng-repeat="(key, value) in fields">
+                <span class="label label-primary wrapper removable" ng-click="cnc.removeField(key)">
+                    <span class="fa fa-times"></span>
+                    {{key}} ({{value}})
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Tag</label>
+            <tags-input class="bootstrap" name="tags" id="tags" ng-model="tags" placeholder="Add a tag"></tags-input>
+        </div>
+        <div class="form-group">
+            <label for="access_token">Access Token</label>
+            <input class="form-control" name="access_token" id="access_token" ng-model="access_token" required>
+        </div>
+        <div class="form-group">
+            <label for="connection_limits">Connection Limits</label>
+            <input type="number" class="form-control" name="connection_limits" id="connection_limits" ng-model="connection_limits" required>
+        </div>
+        <div class="form-group">
+            <label for="message_rate">Message Rate</label>
+            <input type="number" class="form-control" name="message_rate" id="message_rate" ng-model="message_rate" required>
+        </div>
+        <div class="form-group text-center">
+            <a class="btn btn-primary">Reset</a>
+            <a href="#/channels_summary" class="btn btn-primary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </div>
-</div>
+	<div class="col-md-3"></div>
+</form>

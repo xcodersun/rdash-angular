@@ -116,7 +116,9 @@ function routes($stateProvider, $urlRouterProvider) {
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-channels/channels_new_channel.html'
+                templateUrl: 'templates/menu-channels/channels_new_channel.html',
+                controller: 'ChannelsNewChannel',
+                controllerAs: 'cnc',
             },
         },
     })
