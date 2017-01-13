@@ -1,16 +1,16 @@
-<form class="row" name="form" ng-submit="cnc.submit()">
+<form class="row" name="form" role="form" ng-submit="cnc.submit()">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
-        <div class="form-group">
-            <label for="name" >Name</label>
+        <div class="form-group required">
+            <label for="name" class="control-label">Name</label>
             <input class="form-control" name="name" id="name" ng-model="name" required>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" name="description" id="description" ng-model="description" required>
+            <textarea class="form-control" name="description" id="description" ng-model="description">
         </div>
-        <div class="form-group">
-            <label>Fields</label>
+        <div class="form-group required">
+            <label for="field_name" class="control-label">Fields</label>
             <div>
                 <div class="col-md-4">
                     <select class="form-control" name="field_type" id="field_type" ng-model="field_type">
@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="col-md-8 input-group">
-                    <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name">
+                    <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name" ng-required='cnc.filed_empty'>
                     <span class="input-group-btn">
                         <a class="btn btn-primary" ng-click="cnc.addField()">+</a>
                     </span>
@@ -38,22 +38,22 @@
             <label>Tag</label>
             <tags-input class="bootstrap" name="tags" id="tags" ng-model="tags" placeholder="Add a tag"></tags-input>
         </div>
-        <div class="form-group">
-            <label for="access_token">Access Token</label>
+        <div class="form-group required">
+            <label for="access_token" class="control-label">Access Token</label>
             <input class="form-control" name="access_token" id="access_token" ng-model="access_token" required>
         </div>
-        <div class="form-group">
-            <label for="connection_limits">Connection Limits</label>
-            <input type="number" class="form-control" name="connection_limits" id="connection_limits" ng-model="connection_limits" required>
+        <div class="form-group required">
+            <label for="connection_limits" class="control-label">Connection Limits</label>
+            <input type="number" min="1" class="form-control" name="connection_limits" id="connection_limits" ng-model="connection_limits" required>
         </div>
-        <div class="form-group">
-            <label for="message_rate">Message Rate</label>
-            <input type="number" class="form-control" name="message_rate" id="message_rate" ng-model="message_rate" required>
+        <div class="form-group required">
+            <label for="message_rate" class="control-label">Message Rate</label>
+            <input type="number" min="1" class="form-control" name="message_rate" id="message_rate" ng-model="message_rate" required>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group form-actions text-center">
             <a class="btn btn-primary">Reset</a>
             <a href="#/channels_summary" class="btn btn-primary">Cancel</a>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" ng-disabled="cnc.field_empty || form.$invalid" class="btn btn-primary">Create</button>
         </div>
     </div>
 	<div class="col-md-3"></div>
