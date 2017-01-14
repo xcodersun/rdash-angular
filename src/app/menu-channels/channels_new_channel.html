@@ -1,13 +1,14 @@
 <form class="row" name="form" role="form" ng-submit="cnc.submit()">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
+        <div ng-class="{ 'alert': error, 'alert-danger': error.status === 400 }" ng-if="error" ng-bind="error.data.error"></div>
         <div class="form-group required">
             <label for="name" class="control-label">Name</label>
             <input class="form-control" name="name" id="name" ng-model="name" required>
         </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea class="form-control" name="description" id="description" ng-model="description">
+        <div class="form-group required">
+            <label for="description" class="control-label">Description</label>
+            <textarea class="form-control" name="description" id="description" ng-model="description" required>
         </div>
         <div class="form-group required">
             <label for="field_name" class="control-label">Fields</label>
@@ -42,13 +43,15 @@
             <label for="access_token" class="control-label">Access Token</label>
             <input class="form-control" name="access_token" id="access_token" ng-model="access_token" required>
         </div>
-        <div class="form-group required">
+        <div class="form-group required" ng-class="{ 'has-error': form.connection_limits.$dirty && form.connection_limits.$invalid }">
             <label for="connection_limits" class="control-label">Connection Limits</label>
             <input type="number" min="1" class="form-control" name="connection_limits" id="connection_limits" ng-model="connection_limits" required>
+            <span ng-show="form.connection_limits.$dirty && form.connection_limits.$invalid" class="help-block">Connection limits should be an integer</span>
         </div>
-        <div class="form-group required">
+        <div class="form-group required" ng-class="{ 'has-error': form.message_rate.$dirty && form.message_rate.$invalid }">
             <label for="message_rate" class="control-label">Message Rate</label>
             <input type="number" min="1" class="form-control" name="message_rate" id="message_rate" ng-model="message_rate" required>
+            <span ng-show="form.message_rate.$dirty && form.message_rate.$invalid" class="help-block">Message rate should be an integer</span>
         </div>
         <div class="form-group form-actions text-center">
             <a class="btn btn-primary">Reset</a>
