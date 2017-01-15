@@ -43,10 +43,10 @@
             <label for="access_token" class="control-label">Access Token</label>
             <input class="form-control" name="access_token" id="access_token" ng-model="access_token" required>
         </div>
-        <div class="form-group required" ng-class="{ 'has-error': form.connection_limits.$dirty && form.connection_limits.$invalid }">
-            <label for="connection_limits" class="control-label">Connection Limits</label>
-            <input type="number" min="1" class="form-control" name="connection_limits" id="connection_limits" ng-model="connection_limits" required>
-            <span ng-show="form.connection_limits.$dirty && form.connection_limits.$invalid" class="help-block">Connection limits should be an integer</span>
+        <div class="form-group required" ng-class="{ 'has-error': form.connection_limit.$dirty && form.connection_limit.$invalid }">
+            <label for="connection_limit" class="control-label">Connection Limit</label>
+            <input type="number" min="1" class="form-control" name="connection_limit" id="connection_limit" ng-model="connection_limit" required>
+            <span ng-show="form.connection_limit.$dirty && form.connection_limit.$invalid" class="help-block">Connection limit should be an integer</span>
         </div>
         <div class="form-group required" ng-class="{ 'has-error': form.message_rate.$dirty && form.message_rate.$invalid }">
             <label for="message_rate" class="control-label">Message Rate</label>

@@ -45,8 +45,8 @@ function ChannelsNewChannel($scope, $http, $cookies, config, $uibModal) {
 		var access_token = [];
 		access_token.push($scope.access_token);
 		channel["access_tokens"] = access_token;
-		channel["connection_limits"] = $scope.connection_limits;
-		channel["message_rate"] = $scope.connection_limits;
+		channel["connection_limit"] = $scope.connection_limit;
+		channel["message_rate"] = $scope.message_rate;
 
 		var data = JSON.stringify(channel);
 		console.log(data);

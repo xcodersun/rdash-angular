@@ -123,14 +123,16 @@ function routes($stateProvider, $urlRouterProvider) {
         },
     })
     .state('sidebar.channels_view_channel', {
-        url: '/channels_view_channel/:title',
+        url: '/channels_view_channel/:title?:id',
         views: {
             'title@index' : {
                 templateUrl: 'layout/title.html',
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-channels/channels_view_channel.html'
+                templateUrl: 'templates/menu-channels/channels_view_channel.html',
+                controller: 'ChannelsViewCtrl',
+                controllerAs: 'cvc',
             },
         },
     })
