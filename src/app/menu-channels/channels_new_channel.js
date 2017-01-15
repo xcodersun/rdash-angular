@@ -53,7 +53,7 @@ function ChannelsNewChannel($scope, $http, $cookies, config, $uibModal) {
 
 		var authToken = $cookies.getObject('authToken');
 		$http({
-			url: config.apiAdminChannelsCreate,
+			url: config.apiAdminChannels,
 			method: 'POST',
 			data: data,
 			headers: {

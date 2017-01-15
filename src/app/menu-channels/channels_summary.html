@@ -31,8 +31,9 @@
                         <td>draft</td>
                         <td class="text-center">
                             <div ng-controller="ChannelQuickView as $cqv">
-                                <button class="btn btn-primary btn-xs btn-wrapper" ng-click="$cqv.open('lg')">QuickView</button>
+                                <button class="btn btn-success btn-xs btn-wrapper" ng-click="$cqv.open('lg')">QuickView</button>
                                 <a ui-sref="sidebar.channels_view_channel({title:'channels'})" class="btn btn-primary btn-xs btn-wrapper">Details</a>
+                                <button class="btn btn-danger btn-xs btn-wrapper" ng-click="csc.deleteChannel(channel)">Delete</button>
                             </div>
                         </td>
                     </tr>
