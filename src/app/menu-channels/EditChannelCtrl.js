@@ -1,13 +1,30 @@
 angular.module('VivoDash')
-    .controller('EditChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', EditChannelCtrl]);
+    .controller('EditChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', '$uibModal', EditChannelCtrl]);
 
-function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state) {
+function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, $uibModal) {
 	var ecc = this;
 	$scope.field_empty = false;
 	$scope.field_type = "float";
 	$scope.field_name = "";
 	// for new fields
 	$scope.fields = {};
+
+	if (angular.isUndefined($stateParams.id)) {
+		var modalInstance = $uibModal.open({
+			animation: true,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: 'templates/menu-channels/views/edit_channel_warning.html',
+			controller: 'EditChannelWarningCtrl',
+			controllerAs: 'ecwc',
+			backdrop: 'static',
+			size: 'sm',
+		});
+		modalInstance.result.then(function() {
+			$state.go('sidebar.channels_summary', {title: 'channel'});
+		});
+		return;
+	}
 
 	var authToken = $cookies.getObject('authToken');
 	$http({
