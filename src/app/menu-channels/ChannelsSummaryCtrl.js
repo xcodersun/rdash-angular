@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('ChannelsSummaryCtrl', ['$http', '$cookies', 'config', '$uibModal', '$state', ChannelsSummaryCtrl]);
+    .controller('ChannelsSummaryCtrl', ['$http', '$cookies', 'config', '$uibModal', '$state', 'flashService', ChannelsSummaryCtrl]);
 
-function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state) {
+function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashService) {
 	var csc = this;
 	csc.channels = {};
 	csc.deleteChannel = deleteChannel;
@@ -14,17 +14,15 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state) {
 		headers: {
 			'Authentication': authToken.token
 		},
-	}).then(success).catch(fail);
+	}).then(function (response) {
+		flashService.clear();
+		csc.channels = response.data;
+	}).catch(function (e) {
+		console.log(e);
+		flashService.error(e.data["error"], e.status);
+	});
 
 	return;
-
-	function success(response) {
-		csc.channels = response.data;
-	}
-
-	function fail(e) {
-		console.log(e);
-	}
 
 	function deleteChannel(channel) {
 		var modalInstance = $uibModal.open({

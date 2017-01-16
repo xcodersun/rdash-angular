@@ -1,8 +1,9 @@
 angular.module('VivoDash')
-	.run(['$rootScope', '$state', '$cookies', redirect]);
+	.run(['$rootScope', '$state', '$cookies', 'flashService', redirect]);
 
-function redirect($rootScope, $state, $cookies) {
+function redirect($rootScope, $state, $cookies, flashService) {
 	$rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
+		flashService.clear();
 		var currentToken = $cookies.getObject('authToken') || undefined;
 
 		if (toState.name != "login" && angular.isUndefined(currentToken)) {

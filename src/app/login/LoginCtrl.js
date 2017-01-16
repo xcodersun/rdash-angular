@@ -19,7 +19,7 @@ function LoginCtrl($state, authenticationService, flashService) {
     };
 
     function fail(e) {
-      flashService.error('username or password incorrect.');
+      flashService.error('username or password incorrect.', e.status);
     }
   };
 }

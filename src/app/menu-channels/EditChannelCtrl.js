@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('EditChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', '$uibModal', EditChannelCtrl]);
+    .controller('EditChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', '$uibModal', 'flashService', EditChannelCtrl]);
 
-function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, $uibModal) {
+function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, $uibModal, flashService) {
 	var ecc = this;
 	$scope.field_empty = false;
 	$scope.field_type = "float";
@@ -42,8 +42,9 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 		ecc.channel["connection_limit"] = response.data["connection_limit"];
 		ecc.channel["message_rate"] = response.data["message_rate"];
 
-	}).catch(function fail(e) {
+	}).catch(function (e) {
 		console.log(e);
+		flashService.error(e.data["error"], e.status);
 	});
 
 	ecc.addField = function() {
@@ -65,6 +66,7 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 	ecc.submit = function() {
 		if (!angular.equals($scope.fields, {})) {
 			ecc.channel["fields"] = angular.extend(ecc.channel["fields"], $scope.fields);
+			$scope.fields = {};
 		}
 		if (ecc.channel["tags"] != undefined) {
 			var tags = [];
@@ -85,8 +87,10 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 			},
 		}).then(function (response) {
 			$state.reload();
+			flashService.success("Success! Channel is updated!", response.status);
 		}).catch(function (e) {
 			console.log(e);
+			flashService.error(e.data["error"], e.status);
 		});
 	}
 }

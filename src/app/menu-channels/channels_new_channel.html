@@ -1,7 +1,7 @@
 <form class="row" name="form" role="form" ng-submit="ncc.submit()">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
-        <div ng-class="{ 'alert': error, 'alert-danger': error.status === 400 }" ng-if="error" ng-bind="error.data.error"></div>
+        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
         <div class="form-group required">
             <label for="name" class="control-label">Name</label>
             <input class="form-control" name="name" id="name" ng-model="name" required>

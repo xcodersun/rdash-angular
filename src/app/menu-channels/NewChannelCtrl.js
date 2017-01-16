@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('NewChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$uibModal', NewChannelCtrl]);
+    .controller('NewChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$uibModal', 'flashService', NewChannelCtrl]);
 
-function NewChannelCtrl($scope, $http, $cookies, config, $uibModal) {
+function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService) {
 	var ncc = this;
 	$scope.fields = {};
 	$scope.field_type = "float";
@@ -49,7 +49,6 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal) {
 		channel["message_rate"] = $scope.message_rate;
 
 		var data = JSON.stringify(channel);
-		console.log(data);
 
 		var authToken = $cookies.getObject('authToken');
 		$http({
@@ -64,8 +63,7 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal) {
 		return;
 
 		function success(response) {
-			console.log(response);
-			delete $scope.error;
+			flashService.clear();
 			var modalInstance = $uibModal.open({
 				animation: true,
 				ariaLabelledBy: 'modal-title',
@@ -78,7 +76,8 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal) {
 		}
 
 		function fail(e) {
-			$scope.error = e;
+			console.log(e);
+			flashService.error(e.data["error"], e.status);
 		}
 	}
 }
