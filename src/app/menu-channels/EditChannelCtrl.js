@@ -6,8 +6,9 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 	$scope.field_empty = false;
 	$scope.field_type = "float";
 	$scope.field_name = "";
-	// for new fields
+	// for new fields and tags
 	$scope.fields = {};
+	$scope.tags = [];
 
 	if (angular.isUndefined($stateParams.id)) {
 		var modalInstance = $uibModal.open({
@@ -63,17 +64,34 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 		}
 	}
 
+	ecc.addTag = function() {
+		if (ecc.channel["tags"].indexOf($scope.tag_name) === -1
+			&& $scope.tags.indexOf($scope.tag_name) === -1) {
+			$scope.tags.push($scope.tag_name);
+		}
+		$scope.tag_name = "";
+	}
+
+	ecc.removeTag = function(index) {
+		if ($scope.tags.length > 0) {
+			$scope.tags.splice(index, 1);
+		}
+	}
+
 	ecc.submit = function() {
 		if (!angular.equals($scope.fields, {})) {
 			ecc.channel["fields"] = angular.extend(ecc.channel["fields"], $scope.fields);
 			$scope.fields = {};
+		} else {
+			delete ecc.channel["fields"];
 		}
-		if (ecc.channel["tags"] != undefined) {
-			var tags = [];
-			for (var i = 0; i < ecc.channel["tags"].length; i++) {
-				tags.push(ecc.channel["tags"][i]["text"]);
+		if ($scope.tags.length > 0) {
+			for (var i = 0; i < $scope.tags.length; i++) {
+				ecc.channel["tags"].push($scope.tags[i]);
 			}
-			ecc.channel["tags"] = tags;
+			$scope.tags = [];
+		} else {
+			delete ecc.channel["tags"];
 		}
 		var data = JSON.stringify(ecc.channel);
 

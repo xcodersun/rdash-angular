@@ -5,6 +5,7 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService
 	var ncc = this;
 	$scope.fields = {};
 	$scope.field_type = "float";
+	$scope.tags = [];
 	ncc.field_empty = true;
 
 	ncc.addField = function() {
@@ -22,6 +23,19 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService
 		}
 	}
 
+	ncc.addTag = function() {
+		if ($scope.tags.indexOf($scope.tag_name) === -1) {
+			$scope.tags.push($scope.tag_name);
+		}
+		$scope.tag_name = "";
+	}
+
+	ncc.removeTag = function(index) {
+		if ($scope.tags.length > 0) {
+			$scope.tags.splice(index, 1);
+		}
+	}
+
 	ncc.submit = function() {
 		var channel = {};
 		channel["name"] = $scope.name;
@@ -35,12 +49,8 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService
 		}
 		channel["fields"] = $scope.fields;
 
-		if ($scope.tags != undefined) {
-			var tags = [];
-			for (var i = 0; i < $scope.tags.length; i++) {
-				tags.push($scope.tags[i]["text"]);
-			}
-			channel["tags"] = tags;
+		if ($scope.tags.length > 0) {
+			channel["tags"] = $scope.tags;
 		}
 		var access_token = [];
 		access_token.push($scope.access_token);

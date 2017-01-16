@@ -1,1 +1,1 @@
-angular.module('VivoDash', ['chart.js', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies', 'ngTagsInput']);
+angular.module('VivoDash', ['chart.js', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies']);
