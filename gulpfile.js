@@ -20,6 +20,7 @@ var config = {
     js: [
         app + '*.js',
         app + '**/*.js',
+        app + '**/**/*.js',
     ],
     styles: [
         app + '**/*.less',
@@ -29,7 +30,7 @@ var config = {
     templates: [
         app + '**/*.html',
         '!' + app + 'layout/*.html',
-        '!' + app + 'views/*.html'
+        '!' + app + 'views/*.html',
     ],
     views: app + 'views/*.html',
     index: 'src/index.html',

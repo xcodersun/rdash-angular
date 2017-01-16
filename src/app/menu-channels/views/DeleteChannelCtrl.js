@@ -1,11 +1,11 @@
 angular.module('VivoDash')
-    .controller('ChannelsSummaryDelete', ['$uibModalInstance', '$http', '$cookies', 'channel', 'config', ChannelsSummaryDelete]);
+    .controller('DeleteChannelCtrl', ['$uibModalInstance', '$http', '$cookies', 'channel', 'config', DeleteChannelCtrl]);
 
-function ChannelsSummaryDelete($uibModalInstance, $http, $cookies, channel, config) {
-	var csd = this;
-	csd.name = channel.name;
+function DeleteChannelCtrl($uibModalInstance, $http, $cookies, channel, config) {
+	var dcc = this;
+	dcc.name = channel.name;
 
-	csd.ok = function () {
+	dcc.ok = function () {
 		var authToken = $cookies.getObject('authToken');
 		$http({
 			url: config.apiAdminChannels + '/' + channel.id + "?with_indices=true",
@@ -24,7 +24,7 @@ function ChannelsSummaryDelete($uibModalInstance, $http, $cookies, channel, conf
 		}
 	};
 
-	csd.close = function() {
+	dcc.close = function() {
 		$uibModalInstance.close('');
 	}
 }

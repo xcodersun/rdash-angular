@@ -1,4 +1,4 @@
-<form class="row" name="form" role="form" ng-submit="cnc.submit()">
+<form class="row" name="form" role="form" ng-submit="ncc.submit()">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
         <div ng-class="{ 'alert': error, 'alert-danger': error.status === 400 }" ng-if="error" ng-bind="error.data.error"></div>
@@ -22,14 +22,14 @@
                     </select>
                 </div>
                 <div class="col-md-8 input-group">
-                    <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name" ng-required='cnc.filed_empty'>
+                    <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name" ng-required='ncc.filed_empty'>
                     <span class="input-group-btn">
-                        <a class="btn btn-primary" ng-click="cnc.addField()">+</a>
+                        <a class="btn btn-primary" ng-click="ncc.addField()">+</a>
                     </span>
                 </div>
             </div>
             <span ng-repeat="(key, value) in fields">
-                <span class="label label-primary wrapper removable" ng-click="cnc.removeField(key)">
+                <span class="label label-primary wrapper removable" ng-click="ncc.removeField(key)">
                     <span class="fa fa-times"></span>
                     {{key}} ({{value}})
                 </span>
@@ -56,7 +56,7 @@
         <div class="form-group form-actions text-center">
             <a class="btn btn-primary">Reset</a>
             <a href="#/channels_summary" class="btn btn-primary">Cancel</a>
-            <button type="submit" ng-disabled="cnc.field_empty || form.$invalid" class="btn btn-primary">Create</button>
+            <button type="submit" ng-disabled="ncc.field_empty || form.$invalid" class="btn btn-primary">Create</button>
         </div>
     </div>
 	<div class="col-md-3"></div>

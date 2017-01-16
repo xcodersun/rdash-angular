@@ -31,9 +31,9 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state) {
 			animation: true,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
-			templateUrl: 'templates/menu-channels/channels_summary_delete.html',
-			controller: 'ChannelsSummaryDelete',
-			controllerAs: 'csd',
+			templateUrl: 'templates/menu-channels/views/delete_channel.html',
+			controller: 'DeleteChannelCtrl',
+			controllerAs: 'dcc',
 			backdrop: 'static',
 			size: 'md',
 			resolve: {

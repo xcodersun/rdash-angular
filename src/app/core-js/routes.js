@@ -117,8 +117,8 @@ function routes($stateProvider, $urlRouterProvider) {
             },
             'detail@index' : {
                 templateUrl: 'templates/menu-channels/channels_new_channel.html',
-                controller: 'ChannelsNewChannel',
-                controllerAs: 'cnc',
+                controller: 'NewChannelCtrl',
+                controllerAs: 'ncc',
             },
         },
     })
@@ -131,8 +131,8 @@ function routes($stateProvider, $urlRouterProvider) {
             },
             'detail@index' : {
                 templateUrl: 'templates/menu-channels/channels_view_channel.html',
-                controller: 'ChannelsViewCtrl',
-                controllerAs: 'cvc',
+                controller: 'ViewChannelCtrl',
+                controllerAs: 'vcc',
             },
         },
     })

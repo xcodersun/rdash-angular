@@ -1,37 +1,37 @@
 angular.module('VivoDash')
-    .controller('ChannelsNewChannel', ['$scope', '$http', '$cookies', 'config', '$uibModal', ChannelsNewChannel]);
+    .controller('NewChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$uibModal', NewChannelCtrl]);
 
-function ChannelsNewChannel($scope, $http, $cookies, config, $uibModal) {
-	var cnc = this;
+function NewChannelCtrl($scope, $http, $cookies, config, $uibModal) {
+	var ncc = this;
 	$scope.fields = {};
 	$scope.field_type = "float";
-	cnc.field_empty = true;
+	ncc.field_empty = true;
 
-	cnc.addField = function() {
+	ncc.addField = function() {
 		if (!$scope.fields.hasOwnProperty($scope.field_name)) {
 			$scope.fields[$scope.field_name] = $scope.field_type;
-			cnc.field_empty = false;
+			ncc.field_empty = false;
 		}
 		$scope.field_name = "";
 	}
 
-	cnc.removeField = function(key) {
+	ncc.removeField = function(key) {
 		delete $scope.fields[key];
 		if (angular.equals($scope.fields, {})) {
-			cnc.field_empty = true;
+			ncc.field_empty = true;
 		}
 	}
 
-	cnc.submit = function() {
+	ncc.submit = function() {
 		var channel = {};
 		channel["name"] = $scope.name;
 		channel["description"] = $scope.description;
 
 		if (angular.equals($scope.fields, {})) {
-			cnc.field_empty = true;
+			ncc.field_empty = true;
 			return;
 		} else {
-			cnc.field_empty = false;
+			ncc.field_empty = false;
 		}
 		channel["fields"] = $scope.fields;
 
@@ -78,8 +78,6 @@ function ChannelsNewChannel($scope, $http, $cookies, config, $uibModal) {
 		}
 
 		function fail(e) {
-			// The only case that fails to create channel now
-			e.data["error"] = "Channel name already exists."
 			$scope.error = e;
 		}
 	}

@@ -1,8 +1,8 @@
 angular.module('VivoDash')
-    .controller('ChannelsViewCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', ChannelsViewCtrl]);
+    .controller('ViewChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', ViewChannelCtrl]);
 
-function ChannelsViewCtrl($scope, $http, $cookies, config, $stateParams, $state) {
-	var cvc = this;
+function ViewChannelCtrl($scope, $http, $cookies, config, $stateParams, $state) {
+	var vcc = this;
 	$scope.field_empty = false;
 	$scope.field_type = "float";
 	$scope.field_name = "";
@@ -17,20 +17,20 @@ function ChannelsViewCtrl($scope, $http, $cookies, config, $stateParams, $state)
 			'Authentication': authToken.token
 		},
 	}).then(function (response) {
-		cvc.channel = response.data;
-		cvc.channel["description"] = response.data["description"];
-		cvc.channel["fields"] = response.data["fields"];
-		cvc.channel["tags"] = response.data["tags"];
-		cvc.channel["access_tokens"] = response.data["access_tokens"];
-		cvc.channel["connection_limit"] = response.data["connection_limit"];
-		cvc.channel["message_rate"] = response.data["message_rate"];
+		vcc.channel = response.data;
+		vcc.channel["description"] = response.data["description"];
+		vcc.channel["fields"] = response.data["fields"];
+		vcc.channel["tags"] = response.data["tags"];
+		vcc.channel["access_tokens"] = response.data["access_tokens"];
+		vcc.channel["connection_limit"] = response.data["connection_limit"];
+		vcc.channel["message_rate"] = response.data["message_rate"];
 
 	}).catch(function fail(e) {
 		console.log(e);
 	});
 
-	cvc.addField = function() {
-		if (!cvc.channel["fields"].hasOwnProperty($scope.field_name)
+	vcc.addField = function() {
+		if (!vcc.channel["fields"].hasOwnProperty($scope.field_name)
 			&& !$scope.fields.hasOwnProperty($scope.field_name)) {
 			$scope.fields[$scope.field_name] = $scope.field_type;
 			$scope.field_empty = false;
@@ -38,25 +38,25 @@ function ChannelsViewCtrl($scope, $http, $cookies, config, $stateParams, $state)
 		$scope.field_name = "";
 	}
 
-	cvc.removeField = function(key) {
+	vcc.removeField = function(key) {
 		delete $scope.fields[key];
 		if (angular.equals($scope.fields, {})) {
 			$scope.field_empty = true;
 		}
 	}
 
-	cvc.submit = function() {
+	vcc.submit = function() {
 		if (!angular.equals($scope.fields, {})) {
-			cvc.channel["fields"] = angular.extend(cvc.channel["fields"], $scope.fields);
+			vcc.channel["fields"] = angular.extend(vcc.channel["fields"], $scope.fields);
 		}
-		if (cvc.channel["tags"] != undefined) {
+		if (vcc.channel["tags"] != undefined) {
 			var tags = [];
-			for (var i = 0; i < cvc.channel["tags"].length; i++) {
-				tags.push(cvc.channel["tags"][i]["text"]);
+			for (var i = 0; i < vcc.channel["tags"].length; i++) {
+				tags.push(vcc.channel["tags"][i]["text"]);
 			}
-			cvc.channel["tags"] = tags;
+			vcc.channel["tags"] = tags;
 		}
-		var data = JSON.stringify(cvc.channel);
+		var data = JSON.stringify(vcc.channel);
 
 		authToken = $cookies.getObject('authToken');
 		$http({

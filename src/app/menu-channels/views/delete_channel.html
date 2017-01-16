@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button type="button" class="glyphicon glyphicon-remove" style="float:right;" ng-click="csd.close()"></button>
+    <button type="button" class="glyphicon glyphicon-remove" style="float:right;" ng-click="dcc.close()"></button>
     <h3 class="modal-title">Are you ABSOLUTELY sure?</h3>
 </div>
 <div class="modal-body">
@@ -9,7 +9,7 @@
         <p>Please type in the NAME of the channel to confirm.</p>
         <div class="form-group">
             <input class="form-control" name="name" id="name" ng-model="name">
-            <button ng-disabled="name != csd.name" class="btn btn-danger btn-custom" ng-click="csd.ok()">I understand the consequence, delete this channel</button>
+            <button ng-disabled="name != dcc.name" class="btn btn-danger btn-custom" ng-click="dcc.ok()">I understand the consequence, delete this channel</button>
         </div>
     </div>
 </div>
