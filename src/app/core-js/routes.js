@@ -122,17 +122,17 @@ function routes($stateProvider, $urlRouterProvider) {
             },
         },
     })
-    .state('sidebar.channels_view_channel', {
-        url: '/channels_view_channel/:title?:id',
+    .state('sidebar.channels_edit_channel', {
+        url: '/channels_edit_channel/:title?:id',
         views: {
             'title@index' : {
                 templateUrl: 'layout/title.html',
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-channels/channels_view_channel.html',
-                controller: 'ViewChannelCtrl',
-                controllerAs: 'vcc',
+                templateUrl: 'templates/menu-channels/channels_edit_channel.html',
+                controller: 'EditChannelCtrl',
+                controllerAs: 'ecc',
             },
         },
     })

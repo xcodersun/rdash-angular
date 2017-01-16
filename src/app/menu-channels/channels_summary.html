@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="channel in csc.channels">
-                        <td><a ui-sref="sidebar.channels_view_channel({title:'channels', id:channel.id})">{{ channel.name }}<a></td>
+                        <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:channel.id})">{{ channel.name }}<a></td>
                         <td>{{ channel.description }}</td>
                         <td>{{ channel.created | date:'MM/dd/yyyy' }}</td>
                         <td>draft</td>

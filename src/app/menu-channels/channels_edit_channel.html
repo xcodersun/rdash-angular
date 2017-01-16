@@ -1,14 +1,14 @@
-<form class="row" name="form" role="form" ng-submit="vcc.submit()">
+<form class="row" name="form" role="form" ng-submit="ecc.submit()">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
         <div ng-class="{ 'alert': error, 'alert-danger': error.status === 400 }" ng-if="error" ng-bind="error.data.error"></div>
         <div class="form-group required">
             <label for="name" class="control-label">Name</label>
-            <input class="form-control" name="name" id="name" ng-model="vcc.channel.name" disabled>
+            <input class="form-control" name="name" id="name" ng-model="ecc.channel.name" disabled>
         </div>
         <div class="form-group required">
             <label for="description" class="control-label">Description</label>
-            <textarea class="form-control" name="description" id="description" ng-model="vcc.channel.description" required>
+            <textarea class="form-control" name="description" id="description" ng-model="ecc.channel.description" required>
         </div>
         <div class="form-group required">
             <label for="field_name" class="control-label">Fields</label>
@@ -24,17 +24,17 @@
                 <div class="col-md-8 input-group">
                     <input type="text" class="form-control" name="field_name" id="field_name" ng-model="field_name" ng-required='field_empty'>
                     <span class="input-group-btn">
-                        <a class="btn btn-primary" ng-click="vcc.addField()">+</a>
+                        <a class="btn btn-primary" ng-click="ecc.addField()">+</a>
                     </span>
                 </div>
             </div>
-            <span ng-repeat="(key, value) in vcc.channel.fields">
+            <span ng-repeat="(key, value) in ecc.channel.fields">
                 <span class="label label-primary wrapper">
                     {{key}} ({{value}})
                 </span>
             </span>
             <span ng-repeat="(key, value) in fields">
-                <span class="label label-primary wrapper removable" ng-click="vcc.removeField(key)">
+                <span class="label label-primary wrapper removable" ng-click="ecc.removeField(key)">
                     <span class="fa fa-times"></span>
                     {{key}} ({{value}})
                 </span>
@@ -42,20 +42,20 @@
         </div>
         <div class="form-group">
             <label>Tag</label>
-            <tags-input class="bootstrap" name="tags" id="tags" ng-model="vcc.channel.tags" placeholder="Add a tag"></tags-input>
+            <tags-input class="bootstrap" name="tags" id="tags" ng-model="ecc.channel.tags" placeholder="Add a tag"></tags-input>
         </div>
         <div class="form-group required">
             <label for="access_token" class="control-label">Access Token</label>
-            <input class="form-control" name="access_token" id="access_token" ng-model="vcc.channel.access_tokens" required>
+            <input class="form-control" name="access_token" id="access_token" ng-model="ecc.channel.access_tokens" required>
         </div>
         <div class="form-group required" ng-class="{ 'has-error': form.connection_limit.$dirty && form.connection_limit.$invalid }">
             <label for="connection_limit" class="control-label">Connection Limit</label>
-            <input type="number" min="1" class="form-control" name="connection_limit" id="connection_limit" ng-model="vcc.channel.connection_limit" required>
+            <input type="number" min="1" class="form-control" name="connection_limit" id="connection_limit" ng-model="ecc.channel.connection_limit" required>
             <span ng-show="form.connection_limit.$dirty && form.connection_limit.$invalid" class="help-block">Connection limit should be an integer</span>
         </div>
         <div class="form-group required" ng-class="{ 'has-error': form.message_rate.$dirty && form.message_rate.$invalid }">
             <label for="message_rate" class="control-label">Message Rate</label>
-            <input type="number" min="1" class="form-control" name="message_rate" id="message_rate" ng-model="vcc.channel.message_rate" required>
+            <input type="number" min="1" class="form-control" name="message_rate" id="message_rate" ng-model="ecc.channel.message_rate" required>
             <span ng-show="form.message_rate.$dirty && form.message_rate.$invalid" class="help-block">Message rate should be an integer</span>
         </div>
         <div class="form-group form-actions text-center">
