@@ -5,6 +5,7 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSe
 	var csc = this;
 	csc.channels = {};
 	csc.deleteChannel = deleteChannel;
+	csc.quickView = quickView;
 
 	var authToken = $cookies.getObject('authToken');
 
@@ -23,6 +24,23 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSe
 	});
 
 	return;
+
+	function quickView(channel) {
+	    var modalInstance = $uibModal.open({
+	      animation: true,
+	      ariaLabelledBy: 'modal-title',
+	      ariaDescribedBy: 'modal-body',
+	      templateUrl: 'templates/menu-channels/views/channel_quick_view.html',
+	      controller: 'ChannelQuickViewCtrl',
+	      controllerAs: 'cqvc',
+	      size: 'lg',
+	      resolve: {
+	        channel: function() {
+	          return channel;
+	        }
+	      }
+	    });
+	}
 
 	function deleteChannel(channel) {
 		var modalInstance = $uibModal.open({
