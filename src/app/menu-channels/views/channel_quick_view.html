@@ -40,16 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" id="formaldehyde-chart" ng-controller="FormaldehydeLineCtrl">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Formaldehyde Chart</div>
-                    <div class="panel-body">
-                      <canvas id="formaldehyde-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                              chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                              chart-dataset-override="datasetOverride"></canvas>
-                    </div>
-                </div>
-            </div>
+            <nvd3 options="options" data="data"></nvd3>
         </div>
     </div>
 </div>

@@ -25,7 +25,7 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSe
 
 	return;
 
-	function quickView(channel) {
+	function quickView(id) {
 	    var modalInstance = $uibModal.open({
 	      animation: true,
 	      ariaLabelledBy: 'modal-title',
@@ -35,8 +35,8 @@ function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSe
 	      controllerAs: 'cqvc',
 	      size: 'lg',
 	      resolve: {
-	        channel: function() {
-	          return channel;
+	        id: function() {
+	          return id;
 	        }
 	      }
 	    });
