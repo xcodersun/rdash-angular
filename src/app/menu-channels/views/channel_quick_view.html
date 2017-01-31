@@ -17,30 +17,8 @@
         </div>
     </div>
     <div class="col-md-8">
-        <div class="row">
-            <div class="col-md-6" id="temperature-chart" ng-controller="TemperatureLineCtrl">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Temperature Chart</div>
-                    <div class="panel-body">
-                      <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                              chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                              chart-dataset-override="datasetOverride"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" id="humidity-chart" ng-controller="HumidityLineCtrl">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Humidity Chart</div>
-                    <div class="panel-body">
-                      <canvas id="humidity-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                              chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                              chart-dataset-override="datasetOverride"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <nvd3 options="options" data="data"></nvd3>
+        <div class="row" ng-repeat="chart in charts">
+            <nvd3 options="chart.option" data="chart.data"></nvd3>
         </div>
     </div>
 </div>
