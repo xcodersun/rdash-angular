@@ -144,7 +144,9 @@ function routes($stateProvider, $urlRouterProvider) {
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-devices/devices_summary.html'
+                templateUrl: 'templates/menu-devices/devices_summary.html',
+                controller: 'DevicesSummaryCtrl',
+                controllerAs: 'dsc',
             },
         },
     })
