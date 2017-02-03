@@ -3,12 +3,10 @@ angular.module('VivoDash')
 
 function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashService) {
 	var dsc = this;
+	dsc.devices = [];
 	//dsc.quickView = quickView;
 
-	console.log("This is DevicesSummaryCtrl");
-
-	/*var authToken = $cookies.getObject('authToken');
-
+	var authToken = $cookies.getObject('authToken');
 	$http({
 		url: config.apiAdminChannels,
 		method: 'GET',
@@ -17,15 +15,47 @@ function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSer
 		},
 	}).then(function (response) {
 		flashService.clear();
-		csc.channels = response.data;
+		dsc.channels = response.data;
+
+		for (var i in dsc.channels) {
+			var id = dsc.channels[i].id;
+			var url = config.apiAdminScanConnections.replace("%s", id);
+
+			var authToken = $cookies.getObject('authToken');
+			$http({
+				url: url,
+				method: 'GET',
+				headers: {
+					'Authentication': authToken.token
+				},
+			}).then(function (response) {
+				var connections = response.data;
+				for (var i = 0; i < connections.length; i++) {
+					var device = {};
+					device.status = connections[i].status;
+					device.name = connections[i].device_id;
+					device.ip = connections[i].ip;
+					device.channel = connections[i].channel_name;
+					device.connection_type = connections[i].connection_type;
+					device.connected_at = connections[i].connected_at;
+					dsc.devices.push(device);
+				}
+			}).catch(function(e) {
+				/* apiAdminScanConnections */
+				console.log(e);
+				flashService.error(e.data["error"], e.status);
+			});
+		}
+		console.log(dsc.devices);
 	}).catch(function (e) {
+		/* apiAdminChannels */
 		console.log(e);
 		flashService.error(e.data["error"], e.status);
 	});
 
 	return;
 
-	function quickView(id) {
+	/*function quickView(id) {
 	    var modalInstance = $uibModal.open({
 	      animation: true,
 	      ariaLabelledBy: 'modal-title',
