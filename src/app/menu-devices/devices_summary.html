@@ -10,8 +10,7 @@
     <div class="col-md-8"></div>
 </div>
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
+  <div class="col-md-12">
     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
     <div class="table-responsive">
       <table class="table table-contextual">
@@ -20,56 +19,20 @@
           <th>Name</th>
           <th>IP</th>
           <th>Channel</th>
-          <th>Location</th>
-          <th>ID</th>
-          <th>Fields</th>
-          <th>Tags</th>
+          <th>Connection</th>
+          <th>Connected At</th>
           <th></th>
         </thead>
         <tbody>
-          <tr>
-            <td><span class="glyphicon glyphicon-ok-sign text-success"></span></td>
-            <td>Air Purifier</td>
-            <td>50.184.2.167</td>
-            <td>Room Monitor</td>
-            <td>Milpitas</td>
-            <td>1</td>
-            <td>temperature, humidity, formalehyde</td>
-            <td>bedroom1, guest-room</td>
+          <tr ng-repeat="device in dsc.devices">
+            <td>{{ device.status }}</td>
+            <td><a ui-sref="sidebar.devices_explore({title:'devices', cid:device.cid, did:device.id})">{{ device.id }}<a></td>
+            <td>{{ device.ip }}</td>
+            <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:device.cid})">{{ device.channel }}</td>
+            <td>{{ device.connection_type }}</td>
+            <td>{{ device.connected_at | date:'MM/dd/yyyy H:m' }}</td>
             <td class="text-center">
-                <div ng-controller="DeviceQuickView as $dqv">
-                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="glyphicon glyphicon-remove-sign text-danger"></span></td>
-            <td>Edison</td>
-            <td>50.184.2.167</td>
-            <td>Garage Monitor</td>
-            <td>Milpitas</td>
-            <td>1</td>
-            <td>brightness</td>
-            <td>garage</td>
-            <td class="text-center">
-                <div ng-controller="DeviceQuickView as $dqv">
-                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="glyphicon glyphicon-info-sign text-warning"></span></td>
-            <td>RaspberryPi</td>
-            <td>50.184.2.167</td>
-            <td>Door Bell</td>
-            <td>Milpitas</td>
-            <td>1</td>
-            <td>face</td>
-            <td>front-door</td>
-            <td class="text-center">
-                <div ng-controller="DeviceQuickView as $dqv">
-                    <button class="btn btn-success" ng-click="$dqv.open('lg')">QuickView</button>
-                </div>
+                <button class="btn btn-success btn-xs btn-wrapper" ng-click="dsc.quickView(device.cid, device.id)">QuickView</button>
             </td>
           </tr>
         </tbody>
@@ -81,5 +44,4 @@
       <li><a>&raquo;</a></li>
     </ul>
   </div>
-  <div class="col-md-1"></div>
 </div>

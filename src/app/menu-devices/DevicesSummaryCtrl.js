@@ -30,14 +30,15 @@ function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSer
 				},
 			}).then(function (response) {
 				var connections = response.data;
-				for (var i = 0; i < connections.length; i++) {
+				for (var j = 0; j < connections.length; j++) {
 					var device = {};
-					device.status = connections[i].status;
-					device.name = connections[i].device_id;
-					device.ip = connections[i].ip;
-					device.channel = connections[i].channel_name;
-					device.connection_type = connections[i].connection_type;
-					device.connected_at = connections[i].connected_at;
+					device.cid = dsc.channels[i].id;
+					device.status = connections[j].status;
+					device.id = connections[j].device_id;
+					device.ip = connections[j].ip;
+					device.channel = connections[j].channel_name;
+					device.connection_type = connections[j].connection_type;
+					device.connected_at = connections[j].connected_at;
 					dsc.devices.push(device);
 				}
 			}).catch(function(e) {
