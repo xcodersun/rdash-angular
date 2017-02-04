@@ -25,15 +25,13 @@
         </thead>
         <tbody>
           <tr ng-repeat="device in dsc.devices">
-            <td>{{ device.status }}</td>
+            <td><span ng-class="{ 'glyphicon': device, 'glyphicon glyphicon-ok-sign text-success': device.status === 'online', 'glyphicon glyphicon-remove-sign text-success': device.status === 'offline', 'glyphicon glyphicon-info-sign text-success': device.status === 'warning' }"></span></td>
             <td><a ui-sref="sidebar.devices_explore({title:'devices', cid:device.cid, did:device.id})">{{ device.id }}<a></td>
             <td>{{ device.ip }}</td>
             <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:device.cid})">{{ device.channel }}</td>
             <td>{{ device.connection_type }}</td>
             <td>{{ device.connected_at | date:'MM/dd/yyyy H:m' }}</td>
-            <td class="text-center">
-                <button class="btn btn-success btn-xs btn-wrapper" ng-click="dsc.quickView(device.cid, device.id)">QuickView</button>
-            </td>
+            <td><button class="btn btn-success btn-xs btn-wrapper" ng-click="dsc.quickView(device.cid, device.id)">QuickView</button></td>
           </tr>
         </tbody>
       </table>
