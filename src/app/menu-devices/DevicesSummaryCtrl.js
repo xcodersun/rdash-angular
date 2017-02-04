@@ -4,7 +4,7 @@ angular.module('VivoDash')
 function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashService) {
 	var dsc = this;
 	dsc.devices = [];
-	//dsc.quickView = quickView;
+	dsc.quickView = quickView;
 
 	var authToken = $cookies.getObject('authToken');
 	$http({
@@ -46,8 +46,7 @@ function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSer
 				console.log(e);
 				flashService.error(e.data["error"], e.status);
 			});
-		}
-		console.log(dsc.devices);
+		} /* channel scan ends */
 	}).catch(function (e) {
 		/* apiAdminChannels */
 		console.log(e);
@@ -56,20 +55,20 @@ function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSer
 
 	return;
 
-	/*function quickView(id) {
+	function quickView(device) {
 	    var modalInstance = $uibModal.open({
-	      animation: true,
-	      ariaLabelledBy: 'modal-title',
-	      ariaDescribedBy: 'modal-body',
-	      templateUrl: 'templates/menu-channels/views/channel_quick_view.html',
-	      controller: 'ChannelQuickViewCtrl',
-	      controllerAs: 'cqvc',
-	      size: 'lg',
-	      resolve: {
-	        id: function() {
-	          return id;
-	        }
-	      }
+	    	animation: true,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: 'templates/menu-devices/views/devices_quick_view.html',
+			controller: 'DeviceQuickViewCtrl',
+			controllerAs: 'dqvc',
+			size: 'lg',
+			resolve: {
+				device: function() {
+					return device;
+				}
+			}
 	    });
-	}*/
+	}
 }

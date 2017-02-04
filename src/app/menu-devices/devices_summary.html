@@ -31,7 +31,7 @@
             <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:device.cid})">{{ device.channel }}</td>
             <td>{{ device.connection_type }}</td>
             <td>{{ device.connected_at | date:'MM/dd/yyyy H:m' }}</td>
-            <td><button class="btn btn-success btn-xs btn-wrapper" ng-click="dsc.quickView(device.cid, device.id)">QuickView</button></td>
+            <td><button class="btn btn-success btn-xs btn-wrapper" ng-click="dsc.quickView(device)">QuickView</button></td>
           </tr>
         </tbody>
       </table>
