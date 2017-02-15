@@ -36,7 +36,7 @@ function DevicesSummaryCtrl($http, $cookies, config, $uibModal, $state, flashSer
 					device.status = connections[j].status;
 					device.id = connections[j].device_id;
 					device.ip = connections[j].ip;
-					device.channel = connections[j].channel_name;
+					device.channel_name = connections[j].channel_name;
 					device.connection_type = connections[j].connection_type;
 					device.connected_at = connections[j].connected_at;
 					dsc.devices.push(device);
