@@ -151,14 +151,16 @@ function routes($stateProvider, $urlRouterProvider) {
         },
     })
     .state('sidebar.devices_explore', {
-        url: '/devices_explore/:title',
+        url: '/devices_explore/:title?:cid:did',
         views: {
             'title@index' : {
                 templateUrl: 'layout/title.html',
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-devices/devices_explore.html'
+                templateUrl: 'templates/menu-devices/devices_explore.html',
+                controller: 'DevicesExploreCtrl',
+                controllerAs: 'dec',
             },
         },
     })

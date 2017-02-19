@@ -6,4 +6,5 @@ angular.module('VivoDash')
 	'apiAdminQuerySeriesNoTags':'http://35.163.221.218:8080/admin/channels/%s/series?field=%s&summary_type=%s&time_range=%d:%d&time_interval=%ds',
 	'apiAdminQueryDeviceSeriesNoTags':'http://35.163.221.218:8080/admin/channels/%s/devices/%s/series?field=%s&summary_type=%s&time_range=%d:%d&time_interval=%ds',
 	'apiAdminScanConnections':'http://35.163.221.218:8080/admin/channels/%s/connections/scan',
+	'apiAdminConnectionStatus':'http://35.163.221.218:8080/admin/channels/%s/devices/%s/status',
 });
