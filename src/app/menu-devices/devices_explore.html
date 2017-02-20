@@ -6,34 +6,33 @@
         </fieldset>
         <fieldset class="form-group">
             <label>Name</label>
-            <pre class="form-control">Air Purifier</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>ID</label>
-            <pre class="form-control">1</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Channel</label>
-            <pre class="form-control">Room Monitor</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Fields</label>
-            <pre class="pre-wrap">temperature, humidity, formalehyde</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Tags</label>
-            <pre class="pre-wrap">bedroom1, guest-room</pre>
+            <pre class="form-control">{{ dec.device.device_id }}</pre>
         </fieldset>
         <fieldset class="form-group">
             <label>IP</label>
-            <pre class="form-control">50.184.2.167</pre>
+            <pre class="form-control">{{ dec.device.ip }}</pre>
         </fieldset>
         <fieldset class="form-group">
-            <label>Location</label>
-            <pre class="form-control">Milpitas</pre>
+            <label>Channel</label>
+            <pre class="form-control">{{ dec.device.channel_name }}</pre>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Connection</label>
+            <pre class="form-control">{{ dec.device.connection_type }}</pre>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Connected At</label>
+            <pre class="form-control">{{ dec.device.connected_at | date:'MM/dd/yyyy H:m' }}</pre>
         </fieldset>
     </div>
     <div class="col-md-7">
+        <div class="row">
+            <fieldset class="form-group text-center">
+                <button class="btn btn-primary">Remote Console</button>
+                <button class="btn btn-primary">Remote Diagnosis</button>
+                <button class="btn btn-primary">Remote Control</button>
+            </fieldset>
+        </div>
         <div class="row">
             <div class="col-md-6" id="temperature-chart" ng-controller="TemperatureLineCtrl">
                 <div class="panel panel-default">
@@ -67,13 +66,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <fieldset class="form-group text-center">
-                <button class="btn btn-primary">Remote Console</button>
-                <button class="btn btn-primary">Remote Diagnosis</button>
-                <button class="btn btn-primary">Remote Control</button>
-            </fieldset>
         </div>
     </div>
     <div class="col-md-1"></div>

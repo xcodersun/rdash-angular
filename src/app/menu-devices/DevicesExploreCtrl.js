@@ -33,7 +33,7 @@ function DevicesExploreCtrl($scope, $http, $cookies, config, $stateParams, $stat
 			'Authentication': authToken.token
 		},
 	}).then(function (response) {
-		console.log(response.data);
+		dec.device = response.data;
 	});
 
 	return
