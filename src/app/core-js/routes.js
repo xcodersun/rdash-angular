@@ -184,7 +184,9 @@ function routes($stateProvider, $urlRouterProvider) {
                 controller: 'TitleCtrl',
             },
             'detail@index' : {
-                templateUrl: 'templates/menu-dashboards/dashboards_dashboard.html'
+                templateUrl: 'templates/menu-dashboards/dashboards_dashboard.html',
+                controller: 'DashboardsDashboardCtrl',
+                controllerAs: 'ddc',
             },
         },
     })
