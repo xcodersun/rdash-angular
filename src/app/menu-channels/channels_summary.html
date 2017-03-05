@@ -1,46 +1,46 @@
 <div class="row">
-	<div class="col-md-4">
-        <div class="input-group">
-            <span class="input-group-btn">
-                <button class="btn btn-default glyphicon glyphicon-search" type="button"></button>
-            </span>
-            <input type="text" class="form-control search-bar" placeholder="Search">
-        </div>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default glyphicon glyphicon-search" type="button"></button>
+      </span>
+      <input type="text" class="form-control search-bar" placeholder="Search">
     </div>
-    <div class="col-md-8"></div>
+  </div>
+  <div class="col-md-8"></div>
 </div>
 <div class="row row-form">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-contextual">
-                <thead>
-                    <tr class="active">
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Created</th>
-                        <th>State</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="channel in csc.channels">
-                        <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:channel.id})">{{ channel.name }}<a></td>
-                        <td>{{ channel.description }}</td>
-                        <td>{{ channel.created | date:'MM/dd/yyyy' }}</td>
-                        <td>draft</td>
-                        <td class="text-center">
-                            <button class="btn btn-success btn-xs btn-wrapper" ng-click="csc.quickView(channel.id)">QuickView</button>
-                            <button class="btn btn-danger btn-xs btn-wrapper" ng-click="csc.deleteChannel(channel)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <fieldset class="form-group text-center">
-            <a ui-sref="sidebar.channels_new_channel({title:'channels'})" class="btn btn-primary">Create New Channel</button>
-        </fieldset>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error', 'alert-info': flash.type == 'info' }" ng-if="flash" ng-bind="flash.message"></div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-contextual">
+        <thead>
+          <tr class="active">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>State</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="channel in csc.channels">
+            <td><a ui-sref="sidebar.channels_edit_channel({title:'channels', id:channel.id})">{{ channel.name }}</a></td>
+            <td>{{ channel.description }}</td>
+            <td>{{ channel.created | date:'MM/dd/yyyy' }}</td>
+            <td>draft</td>
+            <td class="text-center">
+              <button class="btn btn-success btn-xs btn-wrapper" ng-click="csc.quickView(channel.id)">QuickView</button>
+              <button class="btn btn-danger btn-xs btn-wrapper" ng-click="csc.deleteChannel(channel)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-	<div class="col-md-1"></div>
+    <fieldset class="form-group text-center">
+      <a ui-sref="sidebar.channels_new_channel({title:'channels'})" class="btn btn-primary">Create New Channel</a>
+    </fieldset>
+  </div>
+  <div class="col-md-1"></div>
 </div>

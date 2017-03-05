@@ -1,15 +1,15 @@
 <div class="modal-header">
-    <button type="button" class="glyphicon glyphicon-remove" style="float:right;" ng-click="dcc.close()"></button>
-    <h3 class="modal-title">Are you ABSOLUTELY sure?</h3>
+  <button type="button" class="glyphicon glyphicon-remove" style="float:right;" ng-click="dcc.close()"></button>
+  <h3 class="modal-title">Are you ABSOLUTELY sure?</h3>
 </div>
 <div class="modal-body">
-    <div class="row view">
-        <div class="alert alert-danger">Unexpected bad things will happen if you don’t read this!</div>
-        <p>This action <b>CANNOT</b> be undone. This will permanently delete the channel and its associated data and connection history.</p>
-        <p>Please type in the NAME of the channel to confirm.</p>
-        <div class="form-group">
-            <input class="form-control" name="name" id="name" ng-model="name">
-            <button ng-disabled="name != dcc.name" class="btn btn-danger btn-custom" ng-click="dcc.ok()">I understand the consequence, delete this channel</button>
-        </div>
+  <div class="row view">
+    <div class="alert alert-danger">Unexpected bad things will happen if you don’t read this!</div>
+    <p>This action <b>CANNOT</b> be undone. This will permanently delete the channel and its associated data and connection history.</p>
+    <p>Please type in the NAME of the channel to confirm.</p>
+    <div class="form-group">
+      <input class="form-control" name="name" id="name" ng-model="name">
+      <button ng-disabled="name != dcc.name" class="btn btn-danger btn-custom" ng-click="dcc.ok()">I understand the consequence, delete this channel</button>
     </div>
+  </div>
 </div>

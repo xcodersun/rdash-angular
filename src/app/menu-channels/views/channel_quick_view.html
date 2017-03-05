@@ -1,33 +1,33 @@
 <div class="row view">
-    <div class="col-md-4">
-        <div class="form-group">
-            <h4>Quick View</h4>
-        </div>
-        <div class="form-group">
-            <label>Name</label>
-            <pre class="pre-wrap">{{cqvc.channel.name}}</pre>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <pre class="pre-wrap">{{cqvc.channel.description}}</pre>
-        </div>
-        <div class="form-group">
-            <label>Created</label>
-            <pre class="pre-scroll">{{ cqvc.channel.created | date:'MM/dd/yyyy' }}</pre>
-        </div>
-        <div class="form-group">
-            <label>Connection Limit</label>
-            <pre class="pre-wrap">{{ cqvc.channel.connection_limit }}</pre>
-        </div>
-        <div class="form-group">
-            <label>Message Rate</label>
-            <pre class="pre-wrap">{{ cqvc.channel.message_rate }}</pre>
-        </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <h4>Quick View</h4>
     </div>
-    <div class="col-md-8">
-        <div class="row" ng-repeat="chart in charts">
-            <nvd3 options="chart.option" data="chart.data"></nvd3>
-            <hr>
-        </div>
+    <div class="form-group">
+      <label>Name</label>
+      <pre class="pre-wrap">{{cqvc.channel.name}}</pre>
     </div>
+    <div class="form-group">
+      <label>Description</label>
+      <pre class="pre-wrap">{{cqvc.channel.description}}</pre>
+    </div>
+    <div class="form-group">
+      <label>Created</label>
+      <pre class="pre-scroll">{{ cqvc.channel.created | date:'MM/dd/yyyy' }}</pre>
+    </div>
+    <div class="form-group">
+      <label>Connection Limit</label>
+      <pre class="pre-wrap">{{ cqvc.channel.connection_limit }}</pre>
+    </div>
+    <div class="form-group">
+      <label>Message Rate</label>
+      <pre class="pre-wrap">{{ cqvc.channel.message_rate }}</pre>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row" ng-repeat="chart in charts">
+      <nvd3 options="chart.option" data="chart.data"></nvd3>
+      <hr>
+    </div>
+  </div>
 </div>
