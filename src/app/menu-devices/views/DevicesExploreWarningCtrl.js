@@ -1,10 +1,10 @@
 angular.module('VivoDash')
-    .controller('DevicesExploreWarningCtrl', ['$uibModalInstance', DevicesExploreWarningCtrl]);
+  .controller('DevicesExploreWarningCtrl', ['$uibModalInstance', DevicesExploreWarningCtrl]);
 
 function DevicesExploreWarningCtrl($uibModalInstance) {
-	var dewc = this;
+  var dewc = this;
 
-	dewc.close = function() {
-		$uibModalInstance.close('');
-	}
+  dewc.close = function() {
+    $uibModalInstance.close('');
+  }
 }

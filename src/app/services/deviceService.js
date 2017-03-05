@@ -7,8 +7,14 @@ function deviceService(config, basicHttpService) {
   var service = {};
 
   service.getUrl = getUrl;
+  service.getDeviceStatus = getDeviceStatus;
 
   return service;
+
+  function getDeviceStatus(cid, did) {
+    var url = config.apiAdminDeviceConnectionStatus.replace("%s", cid).replace("%s", did);
+    return basicHttpService.httpGet(url);
+  }
 
   function getUrl(url, cid, did, field, type, start, end, interval) {
     url = url.replace("%s", cid);
