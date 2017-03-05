@@ -1,5 +1,5 @@
 angular.module('VivoDash')
-    .controller('ChannelQuickViewCtrl', ['$scope', 'id', 'config', '$cookies', '$http', ChannelQuickViewCtrl]);
+  .controller('ChannelQuickViewCtrl', ['$scope', 'id', 'config', '$cookies', '$http', ChannelQuickViewCtrl]);
 
 function ChannelQuickViewCtrl($scope, id, config, $cookies, $http) {
   var cqvc = this;
@@ -32,7 +32,7 @@ function ChannelQuickViewCtrl($scope, id, config, $cookies, $http) {
       }).then(function (response) {
         var chart = {}
         var data = {};
-        /* one chart can have multiple data so use dataset */
+        // one chart can have multiple data so use dataset
         var dataset = [];
         data["key"] = key;
         data["values"] = [];
@@ -46,13 +46,12 @@ function ChannelQuickViewCtrl($scope, id, config, $cookies, $http) {
         chart["option"] = genChartOption('lineChart', key);
         $scope.charts.push(chart);
       }).catch(function (e) {
-        /* apiAdminQuerySeriesNotTags */
+        // apiAdminQuerySeriesNotTags
         console.log(e);
       });
     });
-
   }).catch(function (e) {
-    /* apiAdminChannels */
+    // apiAdminChannels
     console.log(e);
   });
 }
@@ -100,7 +99,7 @@ function genChartOption(type, yAxislabel) {
       yAxis: {
         axisLabel: yAxislabel,
         tickFormat: function(d){
-            return d3.format('.02f')(d);
+          return d3.format('.02f')(d);
         },
       },
       xDomain: [start, end],
@@ -113,11 +112,8 @@ function constructUrl(url, id, field, type, start, end) {
   url = url.replace("%s", id);
   url = url.replace("%s", field);
   url = url.replace("%s", type);
-
   url = url.replace("%d", start.toString());
   url = url.replace("%d", "");
-
   url = url.replace("%d", "5400");
-
   return url
 }
