@@ -14,7 +14,7 @@ function ChannelQuickViewCtrl($scope, id, config, basicHttpService, channelServi
     var fileds_data = [];
 
     angular.forEach(cqvc.channel["fields"], function(value, key) {
-      url = channelService.getUrl(config.apiAdminQuerySeriesNoTags, cqvc.channel["id"], key, "avg", start, end, 5400);
+      url = channelService.getUrl(config.apiAdminQueryChannelSeriesNoTags, cqvc.channel["id"], key, "avg", start, end, 5400);
 
       chartService.singleTrend(url, key)
       .then(function (chart) {
