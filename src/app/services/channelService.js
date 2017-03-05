@@ -12,7 +12,7 @@ function channelService(config, basicHttpService) {
   service.deleteChannel = deleteChannel;
   service.getChannelConnections = getChannelConnections;
 
-  service.getUrl = getUrl;
+  service.getDefaultSingleTrendUrl = getDefaultSingleTrendUrl;
 
   return service;
 
@@ -49,17 +49,14 @@ function channelService(config, basicHttpService) {
     return promise;
   }
 
-  function getUrl(url, id, field, type, start, end, interval) {
-    url = url.replace("%s", id);
+  function getDefaultSingleTrendUrl(cid, field, start, end) {
+    var url = config.apiAdminQueryChannelSeriesNoTags;
+    url = url.replace("%s", cid);
     url = url.replace("%s", field);
-    url = url.replace("%s", type);
+    url = url.replace("%s", "avg");
     url = url.replace("%d", start.toString());
-    if (end == -1) {
-      url = url.replace("%d", "");
-    } else {
-      url = url.replace("%d", end.toString());
-    }
-    url = url.replace("%d", interval.toString());
+    url = url.replace("%d", end.toString());
+    url = url.replace("%d", "5400");
     return url;
   }
 }

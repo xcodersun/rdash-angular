@@ -1,11 +1,13 @@
 angular.module('VivoDash')
-  .controller('DevicesExploreCtrl', ['$scope', 'config', '$stateParams', '$state', '$uibModal', 'channelService', 'deviceService', 'chartService', DevicesExploreCtrl]);
+  .controller('DevicesExploreCtrl', ['$scope', '$stateParams', '$state', '$uibModal', 'channelService', 'deviceService', 'chartService', 'utilService', DevicesExploreCtrl]);
 
-function DevicesExploreCtrl($scope, config, $stateParams, $state, $uibModal, channelService, deviceService, chartService) {
+function DevicesExploreCtrl($scope, $stateParams, $state, $uibModal, channelService, deviceService, chartService, utilService) {
   var dec = this;
   var cid = $stateParams.cid;
   var did = $stateParams.did;
   $scope.charts = [];
+  var start = utilService.getDateFromNow(-7, 'start');
+  var end = utilService.getDateFromNow(0, 'end');
 
   // No device found
   if (angular.isUndefined(cid) || angular.isUndefined(did)) {
@@ -28,8 +30,6 @@ function DevicesExploreCtrl($scope, config, $stateParams, $state, $uibModal, cha
   deviceService.getDeviceStatus(cid, did)
   .then(function (device) {
     dec.device = device;
-    var start = getStart();
-    var end = getEnd();
 
     channelService.getChannel(cid)
     .then(function (channel) {
@@ -37,8 +37,9 @@ function DevicesExploreCtrl($scope, config, $stateParams, $state, $uibModal, cha
       var fileds_data = [];
 
       angular.forEach(dec.channel.fields, function(value, key) {
-        url = deviceService.getUrl(config.apiAdminQueryDeviceSeriesNoTags, cid, did, key, "avg", start, end, 5400);
-        chartService.singleTrend(url, key)
+        url = deviceService.getDefaultSingleTrendUrl(cid, did, key, start, end);
+
+        chartService.singleTrend(url, key, start, end)
         .then(function (chart) {
           $scope.charts.push(chart);
         }).catch(function (e) {
@@ -51,24 +52,4 @@ function DevicesExploreCtrl($scope, config, $stateParams, $state, $uibModal, cha
   });
 
   return
-}
-
-function getStart() {
-  date = new Date();
-  date.setDate(date.getDate() -  7);
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  start = Math.floor(date.getTime());
-  return start;
-}
-
-function getEnd() {
-  date = new Date();
-  date.setDate(date.getDate());
-  date.setHours(23);
-  date.setMinutes(59);
-  date.setSeconds(59);
-  end = Math.floor(date.getTime());
-  return end;
 }

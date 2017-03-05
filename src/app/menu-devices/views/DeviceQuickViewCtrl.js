@@ -1,13 +1,12 @@
 angular.module('VivoDash')
-  .controller('DeviceQuickViewCtrl', ['$scope', 'device', 'config', 'channelService', 'deviceService', 'chartService', DeviceQuickViewCtrl]);
+  .controller('DeviceQuickViewCtrl', ['$scope', 'device', 'channelService', 'deviceService', 'chartService', 'utilService', DeviceQuickViewCtrl]);
 
-function DeviceQuickViewCtrl($scope, device, config, channelService, deviceService, chartService) {
+function DeviceQuickViewCtrl($scope, device, channelService, deviceService, chartService, utilService) {
   var dqvc = this;
   dqvc.device = device;
   $scope.charts = [];
-
-  var start = getStart();
-  var end = getEnd();
+  var start = utilService.getDateFromNow(-7, 'start');
+  var end = utilService.getDateFromNow(0, 'end');
 
   channelService.getChannel(dqvc.device.cid)
   .then(function (channel) {
@@ -15,8 +14,9 @@ function DeviceQuickViewCtrl($scope, device, config, channelService, deviceServi
     var fileds_data = [];
 
     angular.forEach(dqvc.channel.fields, function(value, key) {
-      url = deviceService.getUrl(config.apiAdminQueryDeviceSeriesNoTags, dqvc.channel.id, dqvc.device.id, key, "avg", start, end, 5400);
-      chartService.singleTrend(url, key)
+      var url = deviceService.getDefaultSingleTrendUrl(dqvc.channel.id, dqvc.device.id, key, start, end);
+
+      chartService.singleTrend(url, key, start, end)
       .then(function (chart) {
         $scope.charts.push(chart);
       }).catch(function (e) {
@@ -27,24 +27,4 @@ function DeviceQuickViewCtrl($scope, device, config, channelService, deviceServi
     // apiAdminChannels
     console.log(e);
   });
-}
-
-function getStart() {
-  date = new Date();
-  date.setDate(date.getDate() -  7);
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  start = Math.floor(date.getTime());
-  return start;
-}
-
-function getEnd() {
-  date = new Date();
-  date.setDate(date.getDate());
-  date.setHours(23);
-  date.setMinutes(59);
-  date.setSeconds(59);
-  end = Math.floor(date.getTime());
-  return end;
 }

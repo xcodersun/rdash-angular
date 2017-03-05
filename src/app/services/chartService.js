@@ -9,7 +9,7 @@ function chartService(basicHttpService) {
 
   return service;
 
-  function singleTrend(url, field) {
+  function singleTrend(url, field, start, end) {
     var promise = basicHttpService.httpGet(url)
     .then(function (response) {
       var chart = {}
@@ -25,13 +25,13 @@ function chartService(basicHttpService) {
       }
       dataset.push(data);
       chart.data = dataset;
-      chart.option = genChartOption('lineChart', field);
+      chart.option = genChartOption('lineChart', field, start, end);
       return chart;
     });
     return promise;
   }
 
-  function genChartOption(type, yAxislabel) {
+  function genChartOption(type, yAxislabel, start, end) {
     chart = {
       chart: {
         type: type,
