@@ -10,6 +10,7 @@ function channelService(config, basicHttpService) {
   service.createChannel = createChannel;
   service.updateChannel = updateChannel;
   service.deleteChannel = deleteChannel;
+  service.getUrl = getUrl;
 
   return service;
 
@@ -34,5 +35,19 @@ function channelService(config, basicHttpService) {
   function deleteChannel(cid) {
     var url = config.apiAdminChannels + '/' + cid + "?with_indices=true";
     return basicHttpService.httpDelete(url);
+  }
+
+  function getUrl(url, id, field, type, start, end, interval) {
+    url = url.replace("%s", id);
+    url = url.replace("%s", field);
+    url = url.replace("%s", type);
+    url = url.replace("%d", start.toString());
+    if (end == -1) {
+      url = url.replace("%d", "");
+    } else {
+      url = url.replace("%d", end.toString());
+    }
+    url = url.replace("%d", interval.toString());
+    return url;
   }
 }

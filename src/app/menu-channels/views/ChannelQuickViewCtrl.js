@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-  .controller('ChannelQuickViewCtrl', ['$scope', 'id', 'config', '$cookies', '$http', ChannelQuickViewCtrl]);
+  .controller('ChannelQuickViewCtrl', ['$scope', 'id', 'config', '$cookies', '$http', 'basicHttpService', 'channelService', ChannelQuickViewCtrl]);
 
-function ChannelQuickViewCtrl($scope, id, config, $cookies, $http) {
+function ChannelQuickViewCtrl($scope, id, config, $cookies, $http, basicHttpService, channelService) {
   var cqvc = this;
   var authToken = $cookies.getObject('authToken');
   $scope.charts = [];
@@ -9,41 +9,30 @@ function ChannelQuickViewCtrl($scope, id, config, $cookies, $http) {
   var start = getStart();
   var end = getEnd();
 
-  $http({
-    url: config.apiAdminChannels + '/' + id,
-    method: 'GET',
-    headers: {
-      'Authentication': authToken.token
-    },
-  }).then(function (response) {
-    cqvc.channel = response.data;
+  channelService.getChannel(id)
+  .then(function (response) {
+    cqvc.channel = response;
     var fileds_data = [];
 
     angular.forEach(cqvc.channel["fields"], function(value, key) {
-      url = constructUrl(config.apiAdminQuerySeriesNoTags, cqvc.channel["id"], key, "avg", start, end);
+      url = channelService.getUrl(config.apiAdminQuerySeriesNoTags, cqvc.channel["id"], key, "avg", start, end, 5400);
 
-      authToken = $cookies.getObject('authToken');
-      $http({
-        url: url,
-        method: 'GET',
-        headers: {
-          'Authentication': authToken.token
-        },
-      }).then(function (response) {
+      basicHttpService.httpGet(url)
+      .then(function (response) {
         var chart = {}
         var data = {};
         // one chart can have multiple data so use dataset
         var dataset = [];
-        data["key"] = key;
-        data["values"] = [];
-        for (var i = 0; i < response.data.length; i++) {
-          if (response.data[i]["value"]) {
-            data["values"].push([response.data[i]["timestamp"], response.data[i]["value"]]);
+        data.key = key;
+        data.values = [];
+        for (var i = 0; i < response.length; i++) {
+          if (response[i].value) {
+            data.values.push([response[i].timestamp, response[i].value]);
           }
         }
         dataset.push(data);
-        chart["data"] = dataset;
-        chart["option"] = genChartOption('lineChart', key);
+        chart.data = dataset;
+        chart.option = genChartOption('lineChart', key);
         $scope.charts.push(chart);
       }).catch(function (e) {
         // apiAdminQuerySeriesNotTags
@@ -106,14 +95,4 @@ function genChartOption(type, yAxislabel) {
     },
   };
   return chart
-}
-
-function constructUrl(url, id, field, type, start, end) {
-  url = url.replace("%s", id);
-  url = url.replace("%s", field);
-  url = url.replace("%s", type);
-  url = url.replace("%d", start.toString());
-  url = url.replace("%d", "");
-  url = url.replace("%d", "5400");
-  return url
 }

@@ -1,30 +1,30 @@
 angular.module('VivoDash')
-	.factory('flashService', flashService);
+  .factory('flashService', flashService);
 
 flashService.$inject = ['$rootScope'];
 function flashService($rootScope) {
-	var service = {};
-	service.success = success;
-	service.error = error;
-	service.clear = clear;
+  var service = {};
+  service.success = success;
+  service.error = error;
+  service.clear = clear;
 
-	return service;
+  return service;
 
-	function success(message) {
-		$rootScope.flash = {
-			message: message,
-			type: 'success', 
-		};
-	}
+  function success(message) {
+    $rootScope.flash = {
+      message: message,
+      type: 'success', 
+    };
+  }
 
-	function error(message) {
-		$rootScope.flash = {
-			message: message,
-			type: 'error',
-		};
-	}
+  function error(message) {
+    $rootScope.flash = {
+      message: message,
+      type: 'error',
+    };
+  }
 
-	function clear() {
-		delete $rootScope.flash;
-	}
+  function clear() {
+    delete $rootScope.flash;
+  }
 }
