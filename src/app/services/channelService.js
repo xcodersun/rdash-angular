@@ -41,7 +41,12 @@ function channelService(config, basicHttpService) {
 
   function getChannelConnections(cid) {
     var url = config.apiAdminScanChannelConnections.replace("%s", cid);
-    return basicHttpService.httpGet(url);
+    var promise = basicHttpService.httpGet(url)
+                  .then(function (connections) {
+                    connections.cid = cid;
+                    return connections;
+                  });
+    return promise;
   }
 
   function getUrl(url, id, field, type, start, end, interval) {

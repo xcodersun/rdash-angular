@@ -14,10 +14,9 @@ function DevicesSummaryCtrl($uibModal, flashService, channelService) {
     for (var i in dsc.channels) {
       channelService.getChannelConnections(dsc.channels[i].id)
       .then(function (connections) {
-        var connections = connections;
         for (var j = 0; j < connections.length; j++) {
           var device = {};
-          device.cid = dsc.channels[i].id;
+          device.cid = connections.cid;
           device.status = connections[j].status;
           device.id = connections[j].device_id;
           device.ip = connections[j].ip;

@@ -1,33 +1,33 @@
 <div class="row view">
-    <div class="col-md-4">
-        <fieldset class="form-group">
-            <h4>Quick View</h4>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Name</label>
-            <pre class="form-control">{{ dqvc.device.id }}</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>IP</label>
-            <pre class="form-control">{{ dqvc.device.ip }}</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Channel</label>
-            <pre class="form-control">{{ dqvc.device.channel_name }}</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Connection</label>
-            <pre class="form-control">{{ dqvc.device.connection_type }}</pre>
-        </fieldset>
-        <fieldset class="form-group">
-            <label>Connected At</label>
-            <pre class="form-control">{{ dqvc.device.connected_at | date:'MM/dd/yyyy H:m' }}</pre>
-        </fieldset>
+  <div class="col-md-4">
+    <fieldset class="form-group">
+      <h4>Quick View</h4>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Name</label>
+      <pre class="form-control">{{ dqvc.device.id }}</pre>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>IP</label>
+      <pre class="form-control">{{ dqvc.device.ip }}</pre>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Channel</label>
+      <pre class="form-control">{{ dqvc.device.channel_name }}</pre>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Connection</label>
+      <pre class="form-control">{{ dqvc.device.connection_type }}</pre>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Connected At</label>
+      <pre class="form-control">{{ dqvc.device.connected_at | date:'MM/dd/yyyy H:m' }}</pre>
+    </fieldset>
+  </div>
+  <div class="col-md-8">
+    <div class="row" ng-repeat="chart in charts">
+      <nvd3 options="chart.option" data="chart.data"></nvd3>
+      <hr>
     </div>
-    <div class="col-md-8">
-        <div class="row" ng-repeat="chart in charts">
-            <nvd3 options="chart.option" data="chart.data"></nvd3>
-            <hr>
-        </div>
-    </div>
+  </div>
 </div>
