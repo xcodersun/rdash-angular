@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-  .controller('ChannelsSummaryCtrl', ['config', '$uibModal', '$state', 'flashService', 'channelService', ChannelsSummaryCtrl]);
+  .controller('ChannelsSummaryCtrl', ['$uibModal', '$state', 'flashService', 'channelService', ChannelsSummaryCtrl]);
 
-function ChannelsSummaryCtrl(config, $uibModal, $state, flashService, channelService) {
+function ChannelsSummaryCtrl($uibModal, $state, flashService, channelService) {
   var csc = this;
   csc.channels = {};
   csc.deleteChannel = deleteChannel;

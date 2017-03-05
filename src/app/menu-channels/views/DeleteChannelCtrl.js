@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-  .controller('DeleteChannelCtrl', ['$uibModalInstance', 'channel', 'config', 'channelService', DeleteChannelCtrl]);
+  .controller('DeleteChannelCtrl', ['$uibModalInstance', 'channel', 'channelService', DeleteChannelCtrl]);
 
-function DeleteChannelCtrl($uibModalInstance, channel, config, channelService) {
+function DeleteChannelCtrl($uibModalInstance, channel, channelService) {
   var dcc = this;
   dcc.name = channel.name;
 

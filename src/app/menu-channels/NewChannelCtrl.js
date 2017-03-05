@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-  .controller('NewChannelCtrl', ['$scope', 'config', '$uibModal', 'flashService', 'channelService', NewChannelCtrl]);
+  .controller('NewChannelCtrl', ['$scope', '$uibModal', 'flashService', 'channelService', NewChannelCtrl]);
 
-function NewChannelCtrl($scope, config, $uibModal, flashService, channelService) {
+function NewChannelCtrl($scope, $uibModal, flashService, channelService) {
   var ncc = this;
   $scope.fields = {};
   $scope.field_type = "float";

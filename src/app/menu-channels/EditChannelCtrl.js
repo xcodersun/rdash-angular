@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-  .controller('EditChannelCtrl', ['$scope', 'config', '$stateParams', '$state', '$uibModal', 'flashService', 'channelService', EditChannelCtrl]);
+  .controller('EditChannelCtrl', ['$scope', '$stateParams', '$state', '$uibModal', 'flashService', 'channelService', EditChannelCtrl]);
 
-function EditChannelCtrl($scope, config, $stateParams, $state, $uibModal, flashService, channelService) {
+function EditChannelCtrl($scope, $stateParams, $state, $uibModal, flashService, channelService) {
   var ecc = this;
   $scope.field_empty = false;
   $scope.field_type = "float";
