@@ -10,18 +10,16 @@ function flashService($rootScope) {
 
 	return service;
 
-	function success(message, status) {
+	function success(message) {
 		$rootScope.flash = {
 			message: message,
-			status: status,
 			type: 'success', 
 		};
 	}
 
-	function error(message, status) {
+	function error(message) {
 		$rootScope.flash = {
 			message: message,
-			status: status,
 			type: 'error',
 		};
 	}

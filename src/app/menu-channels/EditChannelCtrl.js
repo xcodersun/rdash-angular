@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('EditChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$stateParams', '$state', '$uibModal', 'flashService', EditChannelCtrl]);
+    .controller('EditChannelCtrl', ['$scope', 'config', '$stateParams', '$state', '$uibModal', 'flashService', 'channelService', EditChannelCtrl]);
 
-function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, $uibModal, flashService) {
+function EditChannelCtrl($scope, config, $stateParams, $state, $uibModal, flashService, channelService) {
 	var ecc = this;
 	$scope.field_empty = false;
 	$scope.field_type = "float";
@@ -27,25 +27,12 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 		return;
 	}
 
-	var authToken = $cookies.getObject('authToken');
-	$http({
-		url: config.apiAdminChannels + '/' + $stateParams.id,
-		method: 'GET',
-		headers: {
-			'Authentication': authToken.token
-		},
-	}).then(function (response) {
-		ecc.channel = response.data;
-		ecc.channel["description"] = response.data["description"];
-		ecc.channel["fields"] = response.data["fields"];
-		ecc.channel["tags"] = response.data["tags"];
-		ecc.channel["access_tokens"] = response.data["access_tokens"];
-		ecc.channel["connection_limit"] = response.data["connection_limit"];
-		ecc.channel["message_rate"] = response.data["message_rate"];
-
+	channelService.getChannel($stateParams.id)
+	.then(function (response) {
+		ecc.channel = response;
 	}).catch(function (e) {
 		console.log(e);
-		flashService.error(e.data["error"], e.status);
+		flashService.error(e.data.error);
 	});
 
 	ecc.addField = function() {
@@ -95,20 +82,14 @@ function EditChannelCtrl($scope, $http, $cookies, config, $stateParams, $state, 
 		}
 		var data = JSON.stringify(ecc.channel);
 
-		authToken = $cookies.getObject('authToken');
-		$http({
-			url: config.apiAdminChannels + '/' + $stateParams.id,
-			method: 'PUT',
-			data: data,
-			headers: {
-				'Authentication': authToken.token
-			},
-		}).then(function (response) {
+		channelService.updateChannel($stateParams.id, data)
+		.then(function (response) {
 			$state.reload();
-			flashService.success("Success! Channel is updated!", response.status);
+			flashService.success("Success! Channel is updated!");
 		}).catch(function (e) {
+			$state.reload();
 			console.log(e);
-			flashService.error(e.data["error"], e.status);
+			flashService.error(e.data.error);
 		});
 	}
 }

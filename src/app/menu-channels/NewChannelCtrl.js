@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('NewChannelCtrl', ['$scope', '$http', '$cookies', 'config', '$uibModal', 'flashService', NewChannelCtrl]);
+    .controller('NewChannelCtrl', ['$scope', 'config', '$uibModal', 'flashService', 'channelService', NewChannelCtrl]);
 
-function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService) {
+function NewChannelCtrl($scope, config, $uibModal, flashService, channelService) {
 	var ncc = this;
 	$scope.fields = {};
 	$scope.field_type = "float";
@@ -60,15 +60,7 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService
 
 		var data = JSON.stringify(channel);
 
-		var authToken = $cookies.getObject('authToken');
-		$http({
-			url: config.apiAdminChannels,
-			method: 'POST',
-			data: data,
-			headers: {
-				'Authentication': authToken.token
-			},
-		}).then(success).catch(fail);
+		channelService.createChannel(data).then(success).catch(fail);
 
 		return;
 
@@ -87,7 +79,7 @@ function NewChannelCtrl($scope, $http, $cookies, config, $uibModal, flashService
 
 		function fail(e) {
 			console.log(e);
-			flashService.error(e.data["error"], e.status);
+			flashService.error(e.data.error);
 		}
 	}
 }

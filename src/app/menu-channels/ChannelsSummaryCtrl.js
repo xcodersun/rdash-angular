@@ -1,26 +1,19 @@
 angular.module('VivoDash')
-    .controller('ChannelsSummaryCtrl', ['$http', '$cookies', 'config', '$uibModal', '$state', 'flashService', ChannelsSummaryCtrl]);
+    .controller('ChannelsSummaryCtrl', ['config', '$uibModal', '$state', 'flashService', 'channelService', ChannelsSummaryCtrl]);
 
-function ChannelsSummaryCtrl($http, $cookies, config, $uibModal, $state, flashService) {
+function ChannelsSummaryCtrl(config, $uibModal, $state, flashService, channelService) {
 	var csc = this;
 	csc.channels = {};
 	csc.deleteChannel = deleteChannel;
 	csc.quickView = quickView;
 
-	var authToken = $cookies.getObject('authToken');
-
-	$http({
-		url: config.apiAdminChannels,
-		method: 'GET',
-		headers: {
-			'Authentication': authToken.token
-		},
-	}).then(function (response) {
+	channelService.getAllChannels()
+	.then(function (response) {
 		flashService.clear();
-		csc.channels = response.data;
+		csc.channels = response;
 	}).catch(function (e) {
 		console.log(e);
-		flashService.error(e.data["error"], e.status);
+		flashService.error(e.data.error);
 	});
 
 	return;
