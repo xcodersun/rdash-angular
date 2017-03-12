@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-	.controller('DashboardWidgetTrendCtrl', ['$scope', '$uibModalInstance', '$http', '$cookies', 'config', DashboardWidgetTrendCtrl]);
+	.controller('DashboardWidgetTrendCtrl', ['$scope', '$uibModalInstance', 'channelService', DashboardWidgetTrendCtrl]);
 
-function DashboardWidgetTrendCtrl($scope, $uibModalInstance, $http, $cookies, config) {
+function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService) {
 	var dwtc = this;
 	$scope.channels = [];
 	$scope.fields = [];
@@ -20,15 +20,8 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, $http, $cookies, co
 	}];
 	dwtc.channel = {};
 
-	var authToken = $cookies.getObject('authToken');
-	$http({
-		url: config.apiAdminChannels,
-		method: 'GET',
-		headers: {
-			'Authentication': authToken.token
-		}
-	}).then(function (response) {
-		var channels = response.data;
+	channelService.getAllChannels()
+	.then(function (channels) {
 		for (var i = 0; i < channels.length; i++) {
 			var ch = {};
 			ch.index = i;
@@ -38,7 +31,7 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, $http, $cookies, co
 		}
 	}).catch(function (e) {
 		console.log(e);
-	})
+	});
 
 	dwtc.create = function () {
 		$uibModalInstance.close('create');
@@ -53,15 +46,10 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, $http, $cookies, co
 	}
 
 	dwtc.channelSelected = function() {
-		$http({
-			url: config.apiAdminChannels + '/' + $scope.channel.id,
-			method: 'GET',
-			headers: {
-				'Authentication': authToken.token
-			},
-		}).then(function (response) {
+		channelService.getChannel($scope.channel.id)
+		.then(function (channel) {
 			$scope.fields = [];
-			var fields = response.data.fields;
+			var fields = channel.fields;
 			var i = 0;
 			angular.forEach(fields, function(value, key) {
 				var field = {};
