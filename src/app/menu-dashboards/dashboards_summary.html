@@ -1,89 +1,35 @@
 <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 dashboard-panel">
-        <div class="col-md-4">
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Name:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">dashboard1</p>
-                </div>
-            </div>
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Modified:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">2016-05-05</p>
-                </div>
-            </div>
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Creator:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">Bill</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6" id="dashboard-panel-1" >
-            <div class="panel-body">
-                <div class="col-md-6" ng-controller="TemperatureLineCtrl">
-                    <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                            chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                            chart-dataset-override="datasetOverride"></canvas>
-                </div>
-                <div class="col-md-6" ng-controller="FormaldehydeBarCtrl">
-                    <canvas id="formaldehyde-bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
-                            chart-series="series"></canvas>
-                </div>
-            </div>
-        </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" ng-click="dsc.open()">Trend</button>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-8"></div>
 </div>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 dashboard-panel">
-        <div class="col-md-4">
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Name:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">dashboard2</p>
-                </div>
-            </div>
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Modified:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">2016-07-05</p>
-                </div>
-            </div>
-            <div class="form-horizontal">
-                <label class="col-md-6 control-label">Creator:</label>
-                <div class="col-md-6">
-                    <p class="form-control-static">Alex</p>
-                </div>
+<div>
+    <div class="col-md-4 dashboard-widget">
+        <div class="panel-title text-center">Temperature Chart</div>
+        <div class="panel-body">
+            <div ng-controller="TemperatureLineCtrl">
+                <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+                        chart-dataset-override="datasetOverride"></canvas>
             </div>
         </div>
-        <div class="col-md-6" id="dashboard-panel-2" >
-            <div class="panel-body">
-                <div class="col-md-6" ng-controller="HumidityDoughnutCtrl">
-                    <canvas id="humidity-doughnut" class="chart chart-doughnut" chart-data="data"
-                            chart-labels="labels"></canvas>
-                </div>
-            </div>
+        <div class="text-center">
+            <button class="btn btn-primary">Edit</button>
         </div>
     </div>
-    <div class="col-md-1"></div>
-</div>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <div class="row">
-            <ul class="pagination pagination-sm pull-right">
-              <li><a>&laquo;</a></li>
-              <li><a>1</a></li>
-              <li><a>&raquo;</a></li>
-            </ul>
+    <div class="col-md-4 dashboard-widget">
+        <div class="panel-title text-center">Formaldehyde Chart</div>
+        <div class="panel-body">
+            <div ng-controller="FormaldehydeBarCtrl">
+                <canvas id="formaldehyde-bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
+                        chart-series="series"></canvas>
+            </div>
         </div>
-        <div class="row text-right">
-            <button class="btn btn-primary">Create New Dashboard</button>
+        <div class="text-center">
+            <button class="btn btn-primary">Edit</button>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-4">
+    </div>
 </div>

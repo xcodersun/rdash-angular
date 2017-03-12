@@ -1,10 +1,10 @@
 angular.module('VivoDash')
-    .controller('DashboardsDashboardCtrl', ['$uibModal', '$state', DashboardsDashboardCtrl]);
+    .controller('DashboardsSummaryCtrl', ['$uibModal', '$state', DashboardsSummaryCtrl]);
 
-function DashboardsDashboardCtrl($uibModal, $state) {
-  var ddc = this;
+function DashboardsSummaryCtrl($uibModal, $state) {
+  var dsc = this;
 
-  ddc.open = function () {
+  dsc.open = function () {
     var modalInstance = $uibModal.open({
       animation: true,
       ariaLabelledBy: 'modal-title',

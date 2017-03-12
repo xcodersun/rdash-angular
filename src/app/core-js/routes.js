@@ -171,21 +171,9 @@ function routes($stateProvider, $urlRouterProvider) {
         controller: 'TitleCtrl',
       },
       'detail@index' : {
-        templateUrl: 'templates/menu-dashboards/dashboards_summary.html'
-      },
-    },
-  })
-  .state('sidebar.dashboards_dashboard', {
-    url: '/dashboards_dashboard/:title',
-    views: {
-      'title@index' : {
-        templateUrl: 'layout/title.html',
-        controller: 'TitleCtrl',
-      },
-      'detail@index' : {
-        templateUrl: 'templates/menu-dashboards/dashboards_dashboard.html',
-        controller: 'DashboardsDashboardCtrl',
-        controllerAs: 'ddc',
+        templateUrl: 'templates/menu-dashboards/dashboards_summary.html',
+        controller: 'DashboardsSummaryCtrl',
+        controllerAs: 'dsc',
       },
     },
   })
