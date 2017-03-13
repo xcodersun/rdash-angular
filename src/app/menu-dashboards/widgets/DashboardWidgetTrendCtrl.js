@@ -18,7 +18,6 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService) {
 		label: "7 days",
 		value: 604800,
 	}];
-	dwtc.channel = {};
 
 	channelService.getAllChannels()
 	.then(function (channels) {
@@ -34,14 +33,22 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService) {
 	});
 
 	dwtc.create = function () {
+		dwtc.channel = {};
+		dwtc.channel.id = $scope.channel.id;
+		dwtc.channel.field = $scope.field.name;
+		dwtc.channel.time_range = $scope.time_range.value;
+		dwtc.channel.interval = $scope.interval.value;
+
+		dwtc.dashboard = {};
+		dwtc.dashboard.name = $scope.name;
+		dwtc.dashboard.description = $scope.description;
+		dwtc.dashboard.definition = angular.toJson(dwtc.channel);
+
+		console.log(dwtc.dashboard);
 		$uibModalInstance.close('create');
 	}
 
 	dwtc.cancel = function() {
-		console.log($scope.channel);
-		console.log($scope.field);
-		console.log($scope.time_range);
-		console.log($scope.interval);
 		$uibModalInstance.close('cancel');
 	}
 

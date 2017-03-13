@@ -1,5 +1,5 @@
 <div class="modal-body">
-    <div class="row row-form">
+    <form class="row row-form" name="form" role="form">
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="form-group required">
@@ -12,25 +12,25 @@
             </div>
             <div class="form-group required">
                 <label for="channel" class="control-label">Channel</label>
-                <select ng-model="channel" ng-change="dwtc.channelSelected()" ng-options="ch as ch.name for ch in channels track by ch.index">
+                <select ng-model="channel" ng-change="dwtc.channelSelected()" ng-options="ch as ch.name for ch in channels track by ch.index" required>
                     <option value="">-- choose a channel --</option>
                 </select>
             </div>
             <div class="form-group required">
                 <label for="field" class="control-label">Field</label>
-                <select ng-model="field" ng-options="fd as fd.name for fd in fields track by fd.index">
+                <select ng-model="field" ng-options="fd as fd.name for fd in fields track by fd.index" required>
                     <option value="">-- choose a field --</option>
                 </select>
             </div>
             <div class="form-group required">
                 <label for="last" class="control-label">Last</label>
-                <select ng-model="time_range" ng-change="dwtc.timeRangeSelected()" ng-options="tr as tr.label for tr in time_ranges track by tr.index">
+                <select ng-model="time_range" ng-change="dwtc.timeRangeSelected()" ng-options="tr as tr.label for tr in time_ranges track by tr.index" required>
                     <option value="">-- choose a time range --</option>
                 </select>
             </div>
             <div class="form-group required">
                 <label for="interval" class="control-label">Interval</label>
-                <select ng-model="interval" ng-options="i as i.label for i in intervals track by i.index">
+                <select ng-model="interval" ng-options="i as i.label for i in intervals track by i.index" required>
                     <option value="">-- choose an interval --</option>
                 </select>
             </div>
@@ -40,7 +40,7 @@
 </div>
 <div class="modal-footer">
     <div class="form-group form-actions text-center">
-        <button ng-click="dwtc.create()" class="btn btn-primary">Create</button>
+        <button ng-click="dwtc.create()" ng-disabled="form.$invalid" class="btn btn-primary">Create</button>
         <button ng-click="dwtc.cancel()" class="btn btn-primary">Cancel</button>
     <div class="text-center">
 </div>
