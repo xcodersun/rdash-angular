@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-	.controller('DashboardWidgetTrendCtrl', ['$scope', '$uibModalInstance', 'channelService', DashboardWidgetTrendCtrl]);
+	.controller('DashboardWidgetTrendCtrl', ['$scope', '$uibModalInstance', 'channelService', 'dashboardService', DashboardWidgetTrendCtrl]);
 
-function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService) {
+function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService, dashboardService) {
 	var dwtc = this;
 	$scope.channels = [];
 	$scope.fields = [];
@@ -45,7 +45,15 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService) {
 		dwtc.dashboard.definition = angular.toJson(dwtc.channel);
 
 		console.log(dwtc.dashboard);
-		$uibModalInstance.close('create');
+		var data = angular.toJson(dwtc.dashboard);
+		dashboardService.createDashboard(data)
+		.then(function (response) {
+			$uibModalInstance.close('create');
+		})
+		.catch(function (e) {
+			console.log(e);
+			flashService.error(e.data.error);
+		});
 	}
 
 	dwtc.cancel = function() {
