@@ -1,5 +1,5 @@
 angular.module('VivoDash')
-    .controller('DashboardsSummaryCtrl', ['$uibModal', '$state', DashboardsSummaryCtrl]);
+  .controller('DashboardsSummaryCtrl', ['$uibModal', '$state', DashboardsSummaryCtrl]);
 
 function DashboardsSummaryCtrl($uibModal, $state) {
   var dsc = this;

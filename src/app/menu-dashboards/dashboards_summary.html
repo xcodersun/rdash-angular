@@ -1,35 +1,35 @@
 <div class="row">
-    <div class="col-md-4">
-        <button class="btn btn-primary" ng-click="dsc.open()">Trend</button>
-    </div>
-    <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <button class="btn btn-primary" ng-click="dsc.open()">Trend</button>
+  </div>
+  <div class="col-md-8"></div>
 </div>
 <div>
-    <div class="col-md-4 dashboard-widget">
-        <div class="panel-title text-center">Temperature Chart</div>
-        <div class="panel-body">
-            <div ng-controller="TemperatureLineCtrl">
-                <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-                        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-                        chart-dataset-override="datasetOverride"></canvas>
-            </div>
-        </div>
-        <div class="text-center">
-            <button class="btn btn-primary">Edit</button>
-        </div>
+  <div class="col-md-4 dashboard-widget">
+    <div class="panel-title text-center">Temperature Chart</div>
+    <div class="panel-body">
+      <div ng-controller="TemperatureLineCtrl">
+        <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
+        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
+        chart-dataset-override="datasetOverride"></canvas>
+      </div>
     </div>
-    <div class="col-md-4 dashboard-widget">
-        <div class="panel-title text-center">Formaldehyde Chart</div>
-        <div class="panel-body">
-            <div ng-controller="FormaldehydeBarCtrl">
-                <canvas id="formaldehyde-bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
-                        chart-series="series"></canvas>
-            </div>
-        </div>
-        <div class="text-center">
-            <button class="btn btn-primary">Edit</button>
-        </div>
+    <div class="text-center">
+      <button class="btn btn-primary">Edit</button>
     </div>
-    <div class="col-md-4">
+  </div>
+  <div class="col-md-4 dashboard-widget">
+    <div class="panel-title text-center">Formaldehyde Chart</div>
+    <div class="panel-body">
+      <div ng-controller="FormaldehydeBarCtrl">
+        <canvas id="formaldehyde-bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
+        chart-series="series"></canvas>
+      </div>
     </div>
+    <div class="text-center">
+      <button class="btn btn-primary">Edit</button>
+    </div>
+  </div>
+  <div class="col-md-4">
+  </div>
 </div>
