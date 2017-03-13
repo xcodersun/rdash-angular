@@ -5,31 +5,12 @@
   <div class="col-md-8"></div>
 </div>
 <div>
-  <div class="col-md-4 dashboard-widget">
-    <div class="panel-title text-center">Temperature Chart</div>
-    <div class="panel-body">
-      <div ng-controller="TemperatureLineCtrl">
-        <canvas id="temperature-line" class="chart chart-line" chart-data="data" chart-labels="labels"
-        chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
-        chart-dataset-override="datasetOverride"></canvas>
-      </div>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-primary">Edit</button>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="row" ng-repeat="chart in charts">
+      <nvd3 options="chart.option" data="chart.data"></nvd3>
+      <hr>
     </div>
   </div>
-  <div class="col-md-4 dashboard-widget">
-    <div class="panel-title text-center">Formaldehyde Chart</div>
-    <div class="panel-body">
-      <div ng-controller="FormaldehydeBarCtrl">
-        <canvas id="formaldehyde-bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
-        chart-series="series"></canvas>
-      </div>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-primary">Edit</button>
-    </div>
-  </div>
-  <div class="col-md-4">
-  </div>
+  <div class="col-md-1"></div>
 </div>

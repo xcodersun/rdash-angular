@@ -13,6 +13,7 @@ function channelService(config, basicHttpService) {
   service.getChannelConnections = getChannelConnections;
 
   service.getDefaultSingleTrendUrl = getDefaultSingleTrendUrl;
+  service.getCustomSingleTrendUrl = getCustomSingleTrendUrl;
 
   return service;
 
@@ -57,6 +58,17 @@ function channelService(config, basicHttpService) {
     url = url.replace("%d", start.toString());
     url = url.replace("%d", end.toString());
     url = url.replace("%d", "5400");
+    return url;
+  }
+
+  function getCustomSingleTrendUrl(cid, field, type, start, end, interval) {
+    var url = config.apiAdminQueryChannelSeriesNoTags;
+    url = url.replace("%s", cid);
+    url = url.replace("%s", field);
+    url = url.replace("%s", type);
+    url = url.replace("%d", start.toString());
+    url = url.replace("%d", end.toString());
+    url = url.replace("%d", interval.toString());
     return url;
   }
 }

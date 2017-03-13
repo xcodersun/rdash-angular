@@ -49,8 +49,7 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, channelService, das
     dashboardService.createDashboard(data)
     .then(function (response) {
       $uibModalInstance.close('create');
-    })
-    .catch(function (e) {
+    }).catch(function (e) {
       console.log(e);
       flashService.error(e.data.error);
     });
