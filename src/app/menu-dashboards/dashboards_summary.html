@@ -8,7 +8,9 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <div class="row" ng-repeat="chart in charts">
-      <nvd3 options="chart.option" data="chart.data"></nvd3>
+      <div class="dashboard-panel">
+        <nvd3 options="chart.option" data="chart.data"></nvd3>
+      </div>
       <hr>
     </div>
   </div>

@@ -1,3 +1,9 @@
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
 .dashboard-add-button {
   width: 200px;
   height: 200px;
@@ -8,10 +14,15 @@
 }
 
 .dashboard-panel {
+  .box-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
   background-color: white;
-  border: 2px solid grey;
+  border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
+  :hover {
+    .box-shadow(0px 0px 2px 3px rgba(66, 139, 222, 0.8));
+    border-radius: 10px;
+  }
 }
 
 .dashboard-widget {
