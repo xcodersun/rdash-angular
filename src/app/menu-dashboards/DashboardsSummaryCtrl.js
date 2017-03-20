@@ -7,6 +7,7 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
 
   dashboardService.getAllDashboards()
   .then(function (dashboards) {
+    dsc.dashboards = dashboards;
     for (var i = 0; i < dashboards.length; i++) {
       // Traverse dashboards
       dashboardService.getDashboard(dashboards[i].id)
@@ -30,7 +31,7 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
     console.log(e);
   });
 
-  dsc.open = function () {
+  dsc.trend = function () {
     var modalInstance = $uibModal.open({
       animation: true,
       ariaLabelledBy: 'modal-title',
@@ -48,4 +49,12 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
       }
     });
   };
+
+  dsc.editDashboard = function(index) {
+    console.log(dsc.dashboards[index]);
+  }
+
+  dsc.deleteDashboard = function(index) {
+    console.log(dsc.dashboards[index]);
+  }
 }

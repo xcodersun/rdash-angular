@@ -1,13 +1,17 @@
 <div class="row">
   <div class="col-md-4">
-    <button class="btn btn-primary" ng-click="dsc.open()">Trend</button>
+    <button class="btn btn-primary" ng-click="dsc.trend()">Trend</button>
   </div>
   <div class="col-md-8"></div>
 </div>
 <div>
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <div class="row" ng-repeat="chart in charts">
+    <div class="row" ng-repeat="chart in charts track by $index">
+      <div class="form-group form-actions text-right">
+        <button class="btn btn-primary btn-wrapper" ng-click="dsc.editDashboard($index)">Edit</button>
+        <button class="btn btn-danger btn-wrapper" ng-click="dsc.deleteDashboard($index)">Delete</button>
+      </div>
       <div class="dashboard-panel">
         <nvd3 options="chart.option" data="chart.data"></nvd3>
       </div>
