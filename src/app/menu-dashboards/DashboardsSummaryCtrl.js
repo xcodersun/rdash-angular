@@ -3,23 +3,27 @@ angular.module('VivoDash')
 
 function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashboardService, chartService, utilService) {
   var dsc = this;
-  $scope.charts = [];
+  $scope.dashboards = [];
 
   dashboardService.getAllDashboards()
   .then(function (dashboards) {
-    dsc.dashboards = dashboards;
     for (var i = 0; i < dashboards.length; i++) {
       // Traverse dashboards
       dashboardService.getDashboard(dashboards[i].id)
       .then(function (dashboard) {
+        var db = dashboard;
         var query = angular.fromJson(dashboard.definition);
         var start = utilService.getDateFromNow(-(query.time_range/86400), 'start');
         var end = utilService.getDateFromNow(0, 'end');
-        var url = channelService.getCustomSingleTrendUrl(query.id, query.field, 'avg', start, end, query.interval);
+        var url = channelService.getCustomSingleTrendUrl(query.channel_id, query.field, 'avg', start, end, query.interval);
         // Create chart
         chartService.singleTrend(url, query.field, start, end)
         .then(function (chart) {
-          $scope.charts.push(chart);
+          var item = {};
+          item.dashboard = db;
+          item.chart = {};
+          item.chart = chart;
+          $scope.dashboards.push(item);
         }).catch(function (e) {
           console.log(e);
         }); // Create chart done
@@ -41,6 +45,11 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
       controllerAs: 'dwtc',
       backdrop: 'static',
       size: 'lg',
+      resolve: {
+        dashboard: function() {
+          return
+        }
+      }
     });
     modalInstance.result.then(function() {
       var res = modalInstance.result.$$state.value;
@@ -50,11 +59,25 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
     });
   };
 
-  dsc.editDashboard = function(index) {
-    console.log(dsc.dashboards[index]);
+  dsc.editDashboard = function(dashboard) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'templates/menu-dashboards/widgets/dashboard_widget_trend.html',
+      controller: 'DashboardWidgetTrendCtrl',
+      controllerAs: 'dwtc',
+      backdrop: 'static',
+      size: 'lg',
+      resolve: {
+        dashboard: function() {
+          return dashboard
+        }
+      }
+    });
   }
 
-  dsc.deleteDashboard = function(index) {
-    console.log(dsc.dashboards[index]);
+  dsc.deleteDashboard = function(db_id) {
+    console.log(dsc.dashboards[db_id]);
   }
 }

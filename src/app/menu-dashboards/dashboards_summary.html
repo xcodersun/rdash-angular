@@ -7,13 +7,13 @@
 <div>
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <div class="row" ng-repeat="chart in charts track by $index">
+    <div class="row" ng-repeat="db in dashboards">
       <div class="form-group form-actions text-right">
-        <button class="btn btn-primary btn-wrapper" ng-click="dsc.editDashboard($index)">Edit</button>
-        <button class="btn btn-danger btn-wrapper" ng-click="dsc.deleteDashboard($index)">Delete</button>
+        <button class="btn btn-primary btn-wrapper" ng-click="dsc.editDashboard(db.dashboard)">Edit</button>
+        <button class="btn btn-danger btn-wrapper" ng-click="dsc.deleteDashboard(db.dashboard)">Delete</button>
       </div>
       <div class="dashboard-panel">
-        <nvd3 options="chart.option" data="chart.data"></nvd3>
+        <nvd3 options="db.chart.option" data="db.chart.data"></nvd3>
       </div>
       <hr>
     </div>
