@@ -43,8 +43,29 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
     dsc.editTrend(dashboard);
   }
 
-  dsc.deleteDashboard = function(db_id) {
-    console.log(dsc.dashboards[db_id]);
+  dsc.deleteDashboard = function(dashboard) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'templates/menu-dashboards/views/dashboard_delete_confirm.html',
+      controller: 'DashboardDeleteConfirmCtrl',
+      controllerAs: 'ddcc',
+      backdrop: 'static',
+      size: 'sm',
+      resolve: {
+        dashboard: function() {
+          return dashboard;
+        }
+      }
+    });
+
+    modalInstance.result.then(function() {
+      var res = modalInstance.result.$$state.value;
+      if (res === 'yes') {
+        $state.reload();
+      }
+    });
   }
 
   dsc.editTrend = function(dashboard) {
