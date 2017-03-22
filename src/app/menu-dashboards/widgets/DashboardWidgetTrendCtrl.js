@@ -130,16 +130,24 @@ function DashboardWidgetTrendCtrl($scope, $uibModalInstance, dashboard, channelS
     dwtc.dashboard.description = $scope.description;
     dwtc.dashboard.definition = angular.toJson(dwtc.channel);
 
-    console.log(dwtc.dashboard);
     var data = angular.toJson(dwtc.dashboard);
-    dashboardService.createDashboard(data)
-    .then(function (response) {
-      console.log(response);
-      $uibModalInstance.close('create');
-    }).catch(function (e) {
-      console.log(e);
-      flashService.error(e.data.error);
-    });
+    if (angular.isUndefined(dashboard)) {
+      dashboardService.createDashboard(data)
+      .then(function (response) {
+        $uibModalInstance.close('create');
+      }).catch(function (e) {
+        console.log(e);
+        flashService.error(e.data);
+      });
+    } else {
+      dashboardService.updateDashboard(dashboard.id, data)
+      .then(function (response) {
+        $uibModalInstance.close('create');
+      }).catch(function (e) {
+        console.log(e);
+        flashService.error(e.data);
+      });
+    }
   }
 
   dwtc.cancel = function() {

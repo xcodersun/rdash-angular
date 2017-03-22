@@ -36,48 +36,39 @@ function DashboardsSummaryCtrl($scope, $uibModal, $state, channelService, dashbo
   });
 
   dsc.trend = function () {
-    var modalInstance = $uibModal.open({
-      animation: true,
-      ariaLabelledBy: 'modal-title',
-      ariaDescribedBy: 'modal-body',
-      templateUrl: 'templates/menu-dashboards/widgets/dashboard_widget_trend.html',
-      controller: 'DashboardWidgetTrendCtrl',
-      controllerAs: 'dwtc',
-      backdrop: 'static',
-      size: 'lg',
-      resolve: {
-        dashboard: function() {
-          return
-        }
-      }
-    });
-    modalInstance.result.then(function() {
-      var res = modalInstance.result.$$state.value;
-      if (res === 'create') {
-        $state.go('sidebar.dashboards_summary', {title: 'dashboards'});
-      }
-    });
-  };
+    dsc.editTrend();
+  }
 
   dsc.editDashboard = function(dashboard) {
-    var modalInstance = $uibModal.open({
-      animation: true,
-      ariaLabelledBy: 'modal-title',
-      ariaDescribedBy: 'modal-body',
-      templateUrl: 'templates/menu-dashboards/widgets/dashboard_widget_trend.html',
-      controller: 'DashboardWidgetTrendCtrl',
-      controllerAs: 'dwtc',
-      backdrop: 'static',
-      size: 'lg',
-      resolve: {
-        dashboard: function() {
-          return dashboard
-        }
-      }
-    });
+    dsc.editTrend(dashboard);
   }
 
   dsc.deleteDashboard = function(db_id) {
     console.log(dsc.dashboards[db_id]);
+  }
+
+  dsc.editTrend = function(dashboard) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'templates/menu-dashboards/widgets/dashboard_widget_trend.html',
+      controller: 'DashboardWidgetTrendCtrl',
+      controllerAs: 'dwtc',
+      backdrop: 'static',
+      size: 'lg',
+      resolve: {
+        dashboard: function() {
+          return dashboard;
+        }
+      }
+    });
+
+    modalInstance.result.then(function() {
+      var res = modalInstance.result.$$state.value;
+      if (res === 'create') {
+        $state.reload();
+      }
+    });
   }
 }
