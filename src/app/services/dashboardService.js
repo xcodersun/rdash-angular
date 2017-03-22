@@ -9,6 +9,7 @@ function dashboardService(config, basicHttpService) {
   service.getDashboard = getDashboard;
   service.createDashboard = createDashboard;
   service.updateDashboard = updateDashboard;
+  service.deleteDashboard = deleteDashboard;
 
   return service;
 
@@ -27,5 +28,9 @@ function dashboardService(config, basicHttpService) {
 
   function updateDashboard(did, data) {
     return basicHttpService.httpPut(config.apiAdminDashboards + '/' + did, data);
+  }
+
+  function deleteDashboard(did) {
+    return basicHttpService.httpDelete(config.apiAdminDashboards + '/' + did);
   }
 }
