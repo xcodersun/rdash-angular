@@ -3,6 +3,8 @@ angular.module('VivoDash')
 
 function DevicesExploreCtrl($scope, $stateParams, $state, $uibModal, channelService, deviceService, chartService, utilService) {
   var dec = this;
+  dec.remoteConsole = remoteConsole;
+
   var cid = $stateParams.cid;
   var did = $stateParams.did;
   $scope.charts = [];
@@ -51,5 +53,22 @@ function DevicesExploreCtrl($scope, $stateParams, $state, $uibModal, channelServ
     });
   });
 
-  return
+  return;
+
+  function remoteConsole() {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'templates/menu-devices/views/devices_remote_console_view.html',
+      controller: 'DevicesRemoteConsoleCtrl',
+      controllerAs: 'drcc',
+      size: 'lg',
+      resolve: {
+        did: function() {
+          return $stateParams.did;
+        }
+      }
+    });
+  }
 }

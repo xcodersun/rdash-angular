@@ -1,1 +1,1 @@
-angular.module('VivoDash', ['chart.js', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies', 'nvd3']);
+angular.module('VivoDash', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ngCookies', 'nvd3']);
