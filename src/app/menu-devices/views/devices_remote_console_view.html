@@ -24,7 +24,7 @@
         <tr ng-repeat="row in drcc.table">
           <td>{{ row.action }}</td>
           <td>{{ row.time }}</td>
-          <td>{{ row.log }}</td>
+          <td><pre class="pre-wrap">{{ row.log | json }}</pre></td>
         </tr>
       </tbody>
     </table>

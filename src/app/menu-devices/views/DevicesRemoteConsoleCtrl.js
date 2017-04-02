@@ -21,7 +21,9 @@ function DevicesRemoteConsoleCtrl($scope, $uibModalInstance, deviceService, cnam
     row.action = event.data.substring(0, 12).trim();
     row.time = event.data.substring(12, 38).trim();
     row.log = event.data.substring(38).trim();
-
+    if (row.action == "INDEX") {
+      row.log = angular.fromJson(row.log);
+    }
     drcc.table.unshift(row);
     $scope.$apply();
   }
