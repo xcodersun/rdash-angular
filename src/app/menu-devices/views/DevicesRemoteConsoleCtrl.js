@@ -1,13 +1,21 @@
 angular.module('VivoDash')
-  .controller('DevicesRemoteConsoleCtrl', ['$uibModalInstance', 'did', DevicesRemoteConsoleCtrl]);
+  .controller('DevicesRemoteConsoleCtrl', ['$uibModalInstance', 'deviceService', 'cname', 'cid', 'did', DevicesRemoteConsoleCtrl]);
 
-function DevicesRemoteConsoleCtrl($uibModalInstance, did) {
+function DevicesRemoteConsoleCtrl($uibModalInstance, deviceService, cname, cid, did) {
   var drcc = this;
-  console.log(did);
+  drcc.cname = cname;
 
-  ws = new WebSocket('ws://localhost:8080/');
+  ws = new WebSocket(deviceService.getDeviceAttachUrl(cid, did));
+
+  ws.onopen = function(event) {
+  }
+
+  ws.onmessage = function(event) {
+    console.log(event.data);
+  }
 
   drcc.close = function() {
+    ws.close();
     $uibModalInstance.close('');
   }
 }

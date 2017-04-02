@@ -8,6 +8,7 @@ function deviceService(config, basicHttpService, utilService) {
 
   service.getDefaultSingleTrendUrl = getDefaultSingleTrendUrl;
   service.getDeviceStatus = getDeviceStatus;
+  service.getDeviceAttachUrl = getDeviceAttachUrl;
 
   return service;
 
@@ -25,6 +26,13 @@ function deviceService(config, basicHttpService, utilService) {
     url = url.replace("%d", start.toString());
     url = url.replace("%d", end.toString());
     url = url.replace("%d", "5400");
+    return url;
+  }
+
+  function getDeviceAttachUrl(cid, did) {
+    var url = config.apiAdminDeviceAttach;
+    url = url.replace("%s", cid);
+    url = url.replace("%s", did);
     return url;
   }
 }

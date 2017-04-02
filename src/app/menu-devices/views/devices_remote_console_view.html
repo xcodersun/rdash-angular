@@ -1,7 +1,29 @@
-<div class="modal-header alert alert-danger">
-  <h3 class="modal-title">Device NOT Found</h3>
+<div class="modal-header bg-primary">
+  <h3 class="modal-title">Device Remote Console</h3>
 </div>
-<div class="modal-body" style="text-align:center;">
-  <p>Please choose a device from summary page</p>
-  <button class="btn btn-danger" ng-click="drcc.close()">Close</button>
+<div class="modal-body">
+  <div class="row view">
+    <div class="form-group required">
+      <label for="name" class="control-label">Please Enter Channel ({{ drcc.cname }}) Access Token</label>
+      <div class="input-group">
+        <input class="form-control" name="channel_access_token" id="channel_access_token" ng-model="channel_access_token" required>
+        <span class="input-group-btn">
+          <a class="btn btn-primary" ng-click="drcc.attach()">Attach</a>
+        </span>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr class="active">
+          <th class="col-md-2">Action</th>
+          <th class="col-md-10">Log</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="drcc.close()">Close</button>
 </div>

@@ -63,8 +63,15 @@ function DevicesExploreCtrl($scope, $stateParams, $state, $uibModal, channelServ
       templateUrl: 'templates/menu-devices/views/devices_remote_console_view.html',
       controller: 'DevicesRemoteConsoleCtrl',
       controllerAs: 'drcc',
+      backdrop: 'static',
       size: 'lg',
       resolve: {
+        cname: function() {
+          return dec.channel.name;
+        },
+        cid: function() {
+          return $stateParams.cid;
+        },
         did: function() {
           return $stateParams.did;
         }

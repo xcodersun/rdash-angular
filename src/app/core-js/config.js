@@ -8,4 +8,5 @@ angular.module('VivoDash')
 	'apiAdminScanChannelConnections':'http://35.163.221.218:8080/admin/channels/%s/connections/scan',
 	'apiAdminDeviceConnectionStatus':'http://35.163.221.218:8080/admin/channels/%s/devices/%s/status',
 	'apiAdminDashboards':'http://35.163.221.218:8080/admin/dashboards',
+	'apiAdminDeviceAttach': 'ws://35.163.221.218:8080/admin/channels/%s/devices/%s/attach',
 });
