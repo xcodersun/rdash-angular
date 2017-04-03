@@ -18,11 +18,11 @@
         <h4 class="col-md-3 text-center">Time</h4>
         <h4 class="col-md-7 text-center">Log</h4>
       </li>
-      <li class="list-group-item row no-margin-row" ng-repeat="row in drcc.table">
+      <li ng-repeat="row in drcc.table" ng-class="drcc.rowClass(row)">
         <div class="col-md-2">{{ row.action }}</div>
         <div class="col-md-3">{{ row.time }}</div>
         <div class="col-md-7"><pre class="pre-scroll">{{ row.log | json }}</pre></div>
-      </tr>
+      </li>
     </ul>
   </div>
 </div>

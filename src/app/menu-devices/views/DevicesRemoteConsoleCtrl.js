@@ -32,4 +32,23 @@ function DevicesRemoteConsoleCtrl($scope, $uibModalInstance, deviceService, cnam
     ws.close();
     $uibModalInstance.close('');
   }
+
+  drcc.rowClass = function(row) {
+    cssClass = "";
+    switch (row.action) {
+      case "UPLOAD":
+        cssClass = "list-group-item-success";
+        break;
+      case "INDEX":
+        cssClass = "list-group-item-info";
+        break;
+      case "DISCONNECT":
+        cssClass = "list-group-item-warning";
+        break;
+      case "ERROR":
+        cssClass = "list-group-item-danger";
+        break;
+    }
+    return "list-group-item row no-margin-row " + cssClass;
+  }
 }
