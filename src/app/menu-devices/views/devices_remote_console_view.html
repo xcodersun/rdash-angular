@@ -12,22 +12,18 @@
         </span>
       </div>
     </div>
-    <table class="table table-striped" ng-model="drcc.table">
-      <thead>
-        <tr class="active">
-          <th class="col-md-1">Action</th>
-          <th class="col-md-1">Time</th>
-          <th class="col-md-10">Log</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="row in drcc.table">
-          <td>{{ row.action }}</td>
-          <td>{{ row.time }}</td>
-          <td><pre class="pre-wrap">{{ row.log | json }}</pre></td>
-        </tr>
-      </tbody>
-    </table>
+    <ul class="list-group">
+      <li class="list-group-item row active">
+        <h4 class="col-md-2 text-center">Action</h4>
+        <h4 class="col-md-3 text-center">Time</h4>
+        <h4 class="col-md-7 text-center">Log</h4>
+      </li>
+      <li class="list-group-item row no-margin-row" ng-repeat="row in drcc.table">
+        <div class="col-md-2">{{ row.action }}</div>
+        <div class="col-md-3">{{ row.time }}</div>
+        <div class="col-md-7"><pre class="pre-scroll">{{ row.log | json }}</pre></div>
+      </tr>
+    </ul>
   </div>
 </div>
 <div class="modal-footer">
