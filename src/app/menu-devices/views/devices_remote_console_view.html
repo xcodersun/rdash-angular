@@ -3,14 +3,10 @@
 </div>
 <div class="modal-body">
   <div class="row view">
-    <div class="form-group required">
-      <label for="name" class="control-label">Please Enter Channel ({{ drcc.cname }}) Access Token</label>
-      <div class="input-group">
-        <input class="form-control" name="channel_access_token" id="channel_access_token" ng-model="channel_access_token" required>
-        <span class="input-group-btn">
-          <a class="btn btn-primary" ng-click="drcc.attach()">Attach</a>
-        </span>
-      </div>
+    <div class="form-group row">
+      <button class="btn btn-primary" ng-click="drcc.attach()">Attach</button>
+      <button class="btn btn-danger" ng-click="drcc.detach()">Detach</button>
+      <button class="btn btn-primary" ng-click="drcc.close()">Close</button>
     </div>
     <ul class="list-group">
       <li class="list-group-item row active">
