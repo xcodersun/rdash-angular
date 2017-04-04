@@ -1,7 +1,7 @@
 angular.module('VivoDash')
-    .controller('MenuHomeCtrl', ['$http', '$cookies', 'config', MenuHomeCtrl]);
+    .controller('MenuHomeCtrl', ['statsService', MenuHomeCtrl]);
 
-function MenuHomeCtrl($http, $cookies, config) {
+function MenuHomeCtrl(statsService) {
   var mhc = this;
 
   mhc.myInterval = 5000;
@@ -18,27 +18,16 @@ function MenuHomeCtrl($http, $cookies, config) {
       addSlide(i);
     }
 
-    var authToken = $cookies.getObject('authToken')
-
-    $http({
-      url: config.apiAdminSummary,
-      method: 'GET',
-      headers: {
-        'Authentication': authToken.token
-      },
-    }).then(success).catch(fail);
-
-    function success(response) {
-      mhc.channels = response.data.channels;
-      mhc.dashboards = response.data.dashboards;
-      mhc.devices = response.data.devices;
-    }
-
-    function fail(e) {
+    statsService.getSummary()
+    .then(function (summary) {
+      mhc.channels = summary.channels;
+      mhc.dashboards = summary.dashboards;
+      mhc.devices = summary.devices;
+    }).catch(function (e) {
       mhc.channels = 0;
       mhc.dashboards = 0;
-      mhc.devices = 0;
-    }
+      mhc.devices = 0;      
+    })
   }
 
   function addSlide(currIndex) {
